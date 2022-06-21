@@ -1,0 +1,98 @@
+/* body {
+    margin: 100px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.image-holder {
+    width: 400px;
+    height: 200px;
+    overflow: hidden;
+}
+
+.image-holder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.sidebar {
+    width: 300px;
+    height: 400px;
+    background-color: aqua;
+    overflow: auto;
+}
+
+.avatar {
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.field-holder {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.field-holder label {
+    position: absolute;
+    left: 40px;
+    color: #95a5a6;
+    padding: 2px;
+    transition: all 0.3s ease-in-out;
+    pointer-events: none;
+    transform: translate(0,0);
+    background-color: transparent;
+
+}
+
+.input-field {
+    outline: none;
+    width: 400px;
+    padding: 10px 10px 10px 40px;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+}
+
+.search-icon{
+    content: "";
+    width: 15px;
+    height: 15px;
+    background-image: url(../images/magnifying-glass-solid.svg);
+    background-repeat: no-repeat;
+    display: inline-block;
+    position: absolute;
+    left: 10px;
+    opacity: 0.3;
+    transition: all 0.3s ease-in-out;
+}
+
+.input-field:focus {
+    border-color: #23c2ee;
+}
+
+.input-field:focus~.search-icon {
+    opacity: 1;
+}
+
+.input-field:focus~label {
+    font-size: 10px;
+    transform: translate(-10px,-18px);
+    background-color: white;
+}
+
+/* @media (max-width: 1024px) {
+    body {
+        background-color: #e74c3c;
+    }
+} */
+
+/* @media (min-width: 980px) */

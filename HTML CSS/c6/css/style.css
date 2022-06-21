@@ -1,0 +1,107 @@
+body {
+    margin: 0px;
+}
+
+/* h2 {
+display: inline-block;
+background-color: red;
+margin: 50px 10px;
+}
+
+a {
+    margin: 50px;
+    display: inline-block;
+    background-color: gray;
+    float: right;
+}
+.left {
+    float: left;
+}
+
+.cube {
+    width: 200px;
+    height: 200px;
+    display: inline-block;
+    margin: 20px;
+}
+.red {
+    background-color: red;
+    
+}
+.green {
+    background-color: green;
+padding: 0px 50px;
+}
+.blue {
+    background-color: blue;
+    padding-top: 50px;
+}
+
+.m50 {
+    width: 50px;
+    height: 50px;
+
+}
+.Bright {
+    float: right;
+    background-color: white;
+}
+
+.Bleft {
+    float: left;
+    background-color: black;
+}
+ */
+.Box {
+    margin: 50px;
+    display: inline-block;
+}
+ .Box span{
+display: block;
+     margin-bottom: 45px;
+     text-align: center;
+     margin-bottom: 45px;
+ }
+
+ .Box a {
+     background-color: #2B4964;
+     color: white;
+     text-decoration: none;
+     padding: 12px 55px;
+     /* border: 1px solid #BEC8CF;  */
+    border-width: 1px;
+    border-style: solid;
+    border-color: #BEC8CF;
+    border-radius: 9px;
+    }
+
+    .widget {
+        margin: 100px;
+        display: inline-block;
+        border: 1px solid #707070;
+        border-radius: 15px;
+        padding-top: 43px;
+        padding-left: 12px;
+        padding-right: 20px;
+        padding-bottom: 55px;
+        width: 300px;
+        background-color: lightgray;
+        box-shadow: 5px 5px 30px 3px rgba(92, 154, 94, 0.283);
+    
+    }
+
+    .icon {
+        height: 95px;
+        margin-bottom: 35px;
+    }
+
+    .heading {
+        text-decoration: solid;
+        font-size: 30px;
+        font-weight: bolder;
+        margin-bottom: 45px;
+    }
+    
+    .widget p {
+        line-height: 34px;
+    }

@@ -1,0 +1,54 @@
+.h2-1 {
+    font-size: 20px;
+    color: black;
+    font-style: oblique;
+    background-image: url("../images/frog.jpg");
+    background-repeat: no-repeat;
+    background-position: left;
+    background-size: 100px;
+}
+.h2-2 {
+    font-size:  30px;
+    color: blueviolet;
+    font-style: italic;
+    background-image: url("../images/moroccan-flower-dark.png");
+    background-repeat: no-repeat;
+    background-position: right;
+}
+.h2-3 {
+    font-size:  40px;
+    color: rgb(60, 109, 130);
+    font-style: italic;
+    background-image: url("../images/pink-flowers.png");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.h2-4 {
+    font-size:  50px;
+    color: rgb(20, 66, 5);
+    font-style: italic;
+    background-image: url("../images/moroccan-flower-dark.png");
+    
+    background-position: ;
+}
+
+.par1 {
+    font-size: 20px;
+    color: black;
+    font-style: oblique;
+}
+.par2 {
+    font-size:  30px;
+    color: blueviolet;
+    font-style: italic;
+}
+.par3 {
+    font-size:  40px;
+    color: rgb(60, 109, 130);
+    font-style: italic;
+}
+.par4 {
+    font-size:  50px;
+    color: rgb(20, 66, 5);
+    font-style: italic;
+}
