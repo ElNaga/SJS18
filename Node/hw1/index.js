@@ -10,6 +10,12 @@ function kirilizacija(text) {
         }else if (text[i]=='g' && text[i+1]=='j') {
             newText[i]='ѓ';
             i++;
+        }else if (text[i]=='N' && text[i+1]=='j') {
+            newText[i]='Њ';
+            i++;
+        }else if (text[i]=='n' && text[i+1]=='j') {
+            newText[i]='њ';
+            i++;
         }else if (text[i]=='L' && text[i+1]=='j') {
             newText[i]='Љ';
             i++;
