@@ -115,7 +115,7 @@ append('ulica.txt', ' Leninova')
 //F-ja 5
 const watchF = (file) => {
     return new Promise((success, fail) => {
-        fs.watch("ulica.txt", (eventType, filename) => {
+        fs.watch(file, (eventType, filename) => {
             console.log("\nThe file", filename, "was modified!");
             console.log("The type of change was:", eventType)
             return success(); //samo ednash kje se izvrshi mislam vaka, ama okej e za demonstracija samo
