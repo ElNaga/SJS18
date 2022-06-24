@@ -64,18 +64,21 @@ streamRead('prezime.txt')
 const checkFileRW = (file) => {
     return new Promise((success, fail) => {
         fs.access(file, constants.R_OK | constants.W_OK, (err) => {
-            return fail(err)
+            if (err) {
+                return success(false);
+            }
+            return success(true);
         }
         )
-        return success();
+        
     })
 }
 
 checkFileRW('ime.txt')
-    .then(() => {
-        console.log('File "ime.txt" is readable and writable')
+    .then((check) => {
+        console.log(check ? 'File is readable and writable!' : 'File is not readable and wrtale!')
     })
-    .catch((err) => { console.log(err) });
+    
 
 (async () => {
     try {

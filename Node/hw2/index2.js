@@ -70,13 +70,13 @@ watchF('new2.txt');
 
 // checkFileExist('new2.txt')
 //     .then ( () => {
-//         streamWrite('new2.txt','content')
+//         return streamWrite('new2.txt','content')
 //     } )
 //     .then ( () => {
-//         append('new2.txt',' for append')
+//         return append('new2.txt',' for append')
 //     })
 //     .then( () => {
-//         streamRead('new2.txt')
+//         return streamRead('new2.txt')
 //     });                                          // SO .THEN IMA ASINHRONO IZVRSHUVANJE
 
 
