@@ -2,11 +2,11 @@ const http = require('http');
 
 const server = http.createServer((request, response) => {
     console.log('server test');
-    //response.end('zdravo od serverot'); // isprati odgovor i zatvoranje na povikot
     console.log(request.url);
     //console.log(request.method);
+    console.log(checkURL(request.url));
     let res = checkAndDoOperation(request.url);
-    response.end(res.toString())
+    response.end(res.toString());
 });
 
 server.listen(8080)
