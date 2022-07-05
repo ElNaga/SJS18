@@ -21,7 +21,7 @@ const pages = {
     },
     "/plus": async (request, res) => {
         let queryOfUrl = url.parse(request.url, true).query;
-        let [operator, _] = request.url.split('?');
+        //let [operator, _] = request.url.split('?');
         let result = Number(queryOfUrl['a']) + Number(queryOfUrl['b']);
         let content = await fileRead('./index.html');
         let newContent = content.split('<span>');
@@ -30,7 +30,7 @@ const pages = {
     },
     "/minus": async (request, res) => {
         let queryOfUrl = url.parse(request.url, true).query;
-        let [operator, _] = request.url.split('?');
+        //let [operator, _] = request.url.split('?');
         let result = Number(queryOfUrl['a']) - Number(queryOfUrl['b']);
         let content = await fileRead('./index.html');
         let newContent = content.split('<span>');
@@ -39,7 +39,7 @@ const pages = {
     },
     "/mnozenje": async (request, res) => {
         let queryOfUrl = url.parse(request.url, true).query;
-        let [operator, _] = request.url.split('?');
+        //let [operator, _] = request.url.split('?');
         let result = Number(queryOfUrl['a']) * Number(queryOfUrl['b']);
         let content = await fileRead('./index.html');
         let newContent = content.split('<span>');
@@ -48,7 +48,7 @@ const pages = {
     },
     "/delenje": async (request, res) => {
         let queryOfUrl = url.parse(request.url, true).query;
-        let [operator, _] = request.url.split('?');
+        //let [operator, _] = request.url.split('?');
         let result = Number(queryOfUrl['a']) / Number(queryOfUrl['b']);
         let content = await fileRead('./index.html');
         let newContent = content.split('<span>');
