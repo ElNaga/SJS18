@@ -17,7 +17,7 @@ const fileRead = (filename) => {
 const pages = {
     '/': async (req, res) => {
         let content = await fileRead('./index.html');
-
+        res.end(content);
     },
     "/plus": async (request, res) => {
         let queryOfUrl = url.parse(request.url, true).query;
@@ -48,8 +48,9 @@ const pages = {
     },
     "/delenje": async (request, res) => {
         let queryOfUrl = url.parse(request.url, true).query;
-        //let [operator, _] = request.url.split('?');
-        let result = Number(queryOfUrl['a']) / Number(queryOfUrl['b']);
+        let [operator, _] = request.url.split('?');
+        operator = operator.split('/')
+        let result = calculate(operator[1],Object.values(queryOfUrl));
         let content = await fileRead('./index.html');
         let newContent = content.split('<span>');
         let withResult = newContent[0] + '<span>' + result + newContent[1];
