@@ -73,6 +73,7 @@ const server = http.createServer((req, res) => {
     // let result = calculate(operator,queryOfUrl);
     // response.end('end')
     let [path, _] = req.url.split('?');
+    path = path.toLowerCase();
     if (pages[path]) {
         pages[path](req, res);
     } else {
