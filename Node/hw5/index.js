@@ -1,8 +1,6 @@
 const http = require('http');
 const url = require('url');
 const fs = require('fs');
-const { join } = require('path');
-const parse = require('node-html-parser').parse;
 
 const fileRead = (filename) => {
     return new Promise((success, fail) => { // resolve, reject
