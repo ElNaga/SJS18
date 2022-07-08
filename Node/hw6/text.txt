@@ -1,1 +1,0 @@
-{"ime":"Pero","prezime":"Perovski","prosek":9.2}
