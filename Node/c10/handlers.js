@@ -47,7 +47,6 @@ const calculator = async (req, res) => {
                 return fail();
         }
     })
-
 }
 
 
