@@ -48,7 +48,7 @@ app.get('/calculator', (req,res) => {
 app.post('/calculator-result', async (req, res) => {
     try {
         let result = {
-            rezultat: await handlers.calculator(req, res)
+            rezultat: handlers.calculator(req.body)
         }
         res.render('calculator-result',result);
     } catch (error) {
