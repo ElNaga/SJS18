@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home to All The Blogposts</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body>
+    <div class="container-overall">
+    <header>
+        <h1  class="heading1">Welcome to the Home of All the Blogs</h1>
+        <hr>
+        <a href="/form">Add a blog</a>
+        <br>
+        <br>
+        <br>
+    </header>
+    <% data.forEach( post=> { %>
+        <article>
+            <h2>
+                <a href="/blogpost/<%=post.id%>"><%=post.title%></a> 
+            </h2>
+            <div>
+                <%=post.content%>
+            </div>
+            <span>
+                <%= post.publish_date %>
+                    <a href="/form/<%=post.id%>" style="text-decoration: none; color: rgb(49, 36, 190);"> Edit </a>
+                    <form style='display:inline-block' action="/callback/remove/<%=post.id%>" method="post">
+                        <button style="   border: none;
+                        box-shadow: 50px;
+                        border-radius: 3.5px;
+                        background: none;
+                        cursor: pointer;
+                        color: #a5a5a5;
+                        background-color: rgb(0, 0, 0);
+                        padding: 0px 2px;
+                        text-decoration: none;
+                        font-family: inherit;
+                        font-size: inherit;">Delete</button>
+                    </form>
+
+            </span>
+        </article>
+    </div>
+        <% }) %>
+</body>
+
+</html>
