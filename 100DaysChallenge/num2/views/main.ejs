@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Frontpage</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
+    </head>
+
+<body>
+    <main class="wrapper">
+        <div class="content_column">
+            <div class="logo_cnt">
+                <img src="img/soma_icon.jpg" alt="soma_icon">
+            </div>
+
+            <% for ( let i=0; i < data.length; i++) {%>
+                <div class="menu_1">
+                    <a href="">
+                        <%= data[i] %>
+                    </a>
+                </div>
+                <% } %>
+        </div>
+        <video controls muted loop class="background_video" src="img/WhiskyBar.mp4" autoplay></video>
+
+    </main>
+</body>
+
+</html>
