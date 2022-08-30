@@ -13,55 +13,67 @@ import Student from "./components/Students"
 import { StudentClass } from "./components/StudentClass";
 import Conditionals from "./components/Conditionals";
 
-const secondaryParagraph = {
-  backgroundColor: "teal",
-  color: "black",
-  padding: "10px",
-}
+import { useEffect, useState } from "react";
+import { Homework } from "../components/Homework";
+import {movies} from "../mock/mockData"
 
-// const primaryPara = {
-//   backgroundColor: "yellow",
-//   color: "blue",
+// const secondaryParagraph = {
+//   backgroundColor: "teal",
+//   color: "black",
 //   padding: "10px",
 // }
 
-const name = "Stavre";
-const lastname = "Stavridis";
-const age = 21;
+// // const primaryPara = {
+// //   backgroundColor: "yellow",
+// //   color: "blue",
+// //   padding: "10px",
+// // }
 
-const student = {
-  name,
-  lastname,
-  age,
-  email : "asd@asd.com"
-};
+// const name = "Stavre";
+// const lastname = "Stavridis";
+// const age = 21;
 
-const fruits = ['apple','orange','banana']
+// const student = {
+//   name,
+//   lastname,
+//   age,
+//   email : "asd@asd.com"
+// };
 
-const toShow = false
+// const fruits = ['apple','orange','banana']
 
-const App = () => (
+// const toShow = false
 
-  <div className="App">
-    <p className="primaryPara"
-    // style={primaryPara}
-    >Hello cas 2</p>
+const App = () => {
 
-    <div>{JSON.stringify(student)}</div>
+  // <div className="App">
+  //   <p className="primaryPara"
+  //   // style={primaryPara}
+  //   >Hello cas 2</p>
 
-    <div>{fruits}</div>
+  //   <div>{JSON.stringify(student)}</div>
 
-    <div>{toShow}</div>
+  //   <div>{fruits}</div>
 
-    <p className="secondaryParagraph"
-    // style={secondaryParagraph}
-    
-    >Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quo laborum assumenda eligendi sint perspiciatis praesentium culpa inventore. Officiis asperiores earum voluptate amet laudantium minima in deserunt magnam dolore, eum sit.</p>
-  <Student student= {student}/>
-  <StudentClass student = {student}/>
-  <Conditionals fruits={fruits} toShow={toShow}/>
+  //   <div>{toShow}</div>
+
+  //   <p className="secondaryParagraph"
+  //   // style={secondaryParagraph}
+
+  //   >Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quo laborum assumenda eligendi sint perspiciatis praesentium culpa inventore. Officiis asperiores earum voluptate amet laudantium minima in deserunt magnam dolore, eum sit.</p>
+  // <Student student= {student}/>
+  // <StudentClass student = {student}/>
+  // <Conditionals fruits={fruits} toShow={toShow}/>
+  // </div>
+
+  //const [show, setShow] = useState(true);
+return (
+  <div>
+ <Homework movies={movies}/>
   </div>
+)
+ 
 
-);
+};
 
 export default App;
