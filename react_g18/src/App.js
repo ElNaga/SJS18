@@ -1,79 +1,68 @@
+import {useState} from "react"
 
-// function App() {
-//   return (
-//     <div className="App">
-//       <h1> Hello World! </h1>
-//       <p>This is my first paragraph</p>
-//     </div>
-//   );
-// }
+//import { movies } from "./mock/mockData"
 
-import "./css/styles.css"
-import Student from "./components/Students"
-import { StudentClass } from "./components/StudentClass";
-import Conditionals from "./components/Conditionals";
+// import { Homework } from "./components/Homework";
 
-import { useEffect, useState } from "react";
-import { Homework } from "../components/Homework";
-import {movies} from "../mock/mockData"
-
-// const secondaryParagraph = {
-//   backgroundColor: "teal",
-//   color: "black",
-//   padding: "10px",
-// }
-
-// // const primaryPara = {
-// //   backgroundColor: "yellow",
-// //   color: "blue",
-// //   padding: "10px",
-// // }
-
-// const name = "Stavre";
-// const lastname = "Stavridis";
-// const age = 21;
-
-// const student = {
-//   name,
-//   lastname,
-//   age,
-//   email : "asd@asd.com"
-// };
-
-// const fruits = ['apple','orange','banana']
-
-// const toShow = false
+import {Input} from "./components/common/Input";
 
 const App = () => {
 
-  // <div className="App">
-  //   <p className="primaryPara"
-  //   // style={primaryPara}
-  //   >Hello cas 2</p>
+  const [fieldType, setFieldType] = useState("password")
 
-  //   <div>{JSON.stringify(student)}</div>
 
-  //   <div>{fruits}</div>
+  const [username , setUsername] = useState("")
+  const [password , setPassword] = useState("")
+  const [comment , setComment] = useState("")
 
-  //   <div>{toShow}</div>
+  const onMouseDownHandler = () => {
+    setFieldType("text")
+  }
 
-  //   <p className="secondaryParagraph"
-  //   // style={secondaryParagraph}
+  const onMouseUpHandler = () => {
+    setFieldType("password")
+  }
 
-  //   >Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quo laborum assumenda eligendi sint perspiciatis praesentium culpa inventore. Officiis asperiores earum voluptate amet laudantium minima in deserunt magnam dolore, eum sit.</p>
-  // <Student student= {student}/>
-  // <StudentClass student = {student}/>
-  // <Conditionals fruits={fruits} toShow={toShow}/>
-  // </div>
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    console.log({
+      username,password,comment
+    })
+  }
 
-  //const [show, setShow] = useState(true);
-return (
-  <div>
- <Homework movies={movies}/>
-  </div>
-)
- 
+  return (
+    <form onSubmit={handleSubmit}>
+      {/* <Homework movies={movies}/>  */}
 
-};
+      <Input
+      type="text"
+      name="username"
+      placeholder="Enter Username"
+      value={username}
+      onChange = { (event) => { setUsername(event.target.value)}}
+      />
 
-export default App;
+      <Input
+            placeholder="Please enter password"
+            name="password" 
+            type={fieldType} 
+            mouseDown={onMouseDownHandler} 
+            mouseUp={onMouseUpHandler} 
+            value={password}
+            onChange = { (event) => { setPassword(event.target.value)}}
+            />
+
+        <Input 
+        type="text"
+        name = "comment"
+        placeholder="Enter comment"
+        value={comment}
+        onChange = { (event) => { setComment(event.target.value)}}
+        />
+
+        <button type="submit">Submit</button>
+    </form>
+  );
+}
+
+export default App
