@@ -18,8 +18,13 @@ export class LifecycleClassComponent extends Component {
         console.log('LifecycleClassComponent -> componentDidMount')
     }
 
+    // method called when component will be removed from  DOM
+    componentWillUnmount() {
+        console.log('LifecycleClassComponent -> componentWillUnmount')
+    }
+
     increment = () => {
-        console.log('Increment Function');
+        //console.log('Increment Function');
         //this.setState({counter : this.state.counter+1})
         this.setState(() => (
             {counter : this.state.counter+1}

@@ -1,5 +1,6 @@
 import { LifecycleClassComponent } from "./components/LifecycleClassComponent";
 import { useState } from "react";
+import { LifecycleFuncComponent } from "./components/LifecycleFuncComponent";
 
 
 const App = () => {
@@ -11,8 +12,13 @@ const App = () => {
   return (
     <div>
       {show && <LifecycleClassComponent/>}
+    
+
+      {show && <LifecycleFuncComponent />}
+
       <button
-        onClick={() => setShow((s) => !s)}
+        style={{padding: "10px"}}
+        onClick={() => setShow((status) => !status)}
       >Show/Hide</button>
     </div>
   );
