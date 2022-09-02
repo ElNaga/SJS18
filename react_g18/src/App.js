@@ -1,6 +1,8 @@
-import { LifecycleClassComponent } from "./components/LifecycleClassComponent";
+//import { LifecycleClassComponent } from "./components/LifecycleClassComponent";
 import { useState } from "react";
 import { LifecycleFuncComponent } from "./components/LifecycleFuncComponent";
+import { Login } from "./components/Loging";
+
 
 
 const App = () => {
@@ -11,15 +13,16 @@ const App = () => {
 
   return (
     <div>
-      {show && <LifecycleClassComponent/>}
     
-
+{/* 
       {show && <LifecycleFuncComponent />}
 
       <button
         style={{padding: "10px"}}
         onClick={() => setShow((status) => !status)}
-      >Show/Hide</button>
+      >Show/Hide</button> */}
+
+      <Login />
     </div>
   );
 
