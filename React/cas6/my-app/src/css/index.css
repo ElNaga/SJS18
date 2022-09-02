@@ -1,0 +1,25 @@
+li {
+    font-size: large;
+    padding: 10px;
+    list-style: none;
+    border:  1px solid black;
+    margin: 5px;
+
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.mark-as-done {
+    text-decoration: line-through;
+}
+
+.deleteSpan {
+    cursor: pointer;
+    text-decoration: none;
+}
+
+input[type='checkbox'] {
+    width: 20px;
+    height: 20px;
+}
