@@ -5,7 +5,11 @@ import SomaLogo from '../soma_icon.jpg'
 export const Navbar = () => {
 
 
+<<<<<<< HEAD
 
+=======
+ 
+>>>>>>> AI
     return (
         <div className='wrapper'>
                 <div className='navbar-icon-left'>
