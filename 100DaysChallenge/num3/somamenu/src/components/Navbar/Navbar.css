@@ -1,0 +1,52 @@
+.wrapper {
+    display: flex;
+    justify-content: space-between;
+    background-color: black;
+    font-family: 'Courier New', Courier, monospace;
+    align-items: center;
+}
+
+
+.navbar-icon-left {
+    width: 60px;
+    height: 60px;
+}
+
+.selectIconsMenu {
+    text-decoration: none;
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+    
+}
+
+.selectIconsMenu li {
+    display: inline;
+    padding: 3px 10px;
+    cursor: pointer;
+    /*font-family: 'Poppins', sans-serif;*/
+    font-weight: lighter;
+    font-size: medium;
+    color: white;
+
+    float: left;
+    position: relative;
+    padding: 10px 20px;
+    overflow: hidden;
+}
+
+.selectIconsMenu li::after {
+    background-color: white;
+    content: "";
+    width: 0;
+    height: 1.5px;
+    border-radius: 15%;
+    left: 0;
+    bottom: 0;
+    transition: width 0.5s ease 0s;
+    position: absolute;
+}
+
+.selectIconsMenu li:hover::after {
+    width: 100%;
+}

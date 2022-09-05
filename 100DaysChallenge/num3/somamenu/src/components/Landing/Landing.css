@@ -1,0 +1,81 @@
+.wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.wrapper2 {
+    
+    font-family: 'Audiowide', sans-serif;
+    margin: 0px;
+    overflow: scroll;
+    width: 75%;
+    background-color: #2d2f3b;
+
+
+}
+
+.phone_icon {
+    width: 30px;
+    height: 30px;
+    padding-top: 20px;
+}
+
+.content_column {
+    display: flexbox;
+    justify-items: center;
+    margin-bottom: 30px;
+}
+
+.logo_cnt {
+    margin-top: 17%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 40px;
+}
+
+.logo_cnt img {
+    margin-left: auto;
+    margin-right: auto;
+    max-width:90%
+}
+
+.menu_1 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+
+    padding: 3px;
+    box-shadow: 10px 10px;
+    background-color: rgba(255, 255, 255, 0.65) ;
+    
+    border-style: solid;
+    border-color: #1b1c24;
+    border-radius: 4px;
+    border-width: 1px;
+}
+
+.menu_1 a {
+    margin-left: auto;
+    margin-right: auto;
+    text-decoration: none;
+    font-size: 20px;
+    color: rgb(0, 0, 0);
+    opacity: 1;
+}
+
+.background_video {
+    filter: blur(7px);
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: -1;
+}
