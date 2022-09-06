@@ -8,8 +8,8 @@
     font-family: 'Audiowide', sans-serif;
     margin: 0px;
     overflow: scroll;
-    width: 75%;
-    background-color: #2d2f3b;
+    width: 100%;
+    /* background-color: #2d2f3b; */
 
 
 }
@@ -41,16 +41,18 @@
 }
 
 .menu_1 {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    margin-left: auto;
-    margin-right: auto;
+    font-family:'Courier New', Courier, monospace;
+    font-size: medium;
+    margin-left: 0px;
+    margin-right: 0px;
     margin-top: 20px;
     display: flex;
     justify-content: center;
+    text-decoration: none;
 
     padding: 3px;
-    box-shadow: 10px 10px;
-    background-color: rgba(255, 255, 255, 0.65) ;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.7);
+    background-color: rgba(255, 255, 255, 0.4) ;
     
     border-style: solid;
     border-color: #1b1c24;
@@ -58,20 +60,31 @@
     border-width: 1px;
 }
 
-.menu_1 a {
+ul {
+    margin: 10%;
+    padding: 0px;
+    justify-content: center;
+    width: 80%;
+}
+
+.menu_1 li {
+    justify-self: center;
+    text-decoration: none;
+}
+
+.menu_1 li Link{
     margin-left: auto;
     margin-right: auto;
     text-decoration: none;
+    color: #000;
     font-size: 20px;
-    color: rgb(0, 0, 0);
-    opacity: 1;
 }
 
 .background_video {
-    filter: blur(7px);
-    width: 100vw;
-    height: 100vh;
-    object-fit: cover;
+    filter: blur(4px);
+    width: 50%;
+    height: 100%;
+    object-fit:contain;
     position: fixed;
     left: 0;
     right: 0;

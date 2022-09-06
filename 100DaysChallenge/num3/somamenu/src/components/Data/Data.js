@@ -36,7 +36,7 @@ export const Data = [{
   },{
     "product": "Кока кола",
     "price": 100,
-    "category": " Безалкохолни пијалоци",
+    "category": "Безалкохолни пијалоци",
     "description": "",
     "linkDes": "",
     "flag": false
