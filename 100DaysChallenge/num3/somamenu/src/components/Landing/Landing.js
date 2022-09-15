@@ -6,7 +6,7 @@ import Logo from '../soma_icon.jpg'
 import {useState} from 'react'
 import './Landing.css'
 import pic1 from './cocktail.jpeg'
-import video1 from '../../../public/Videos/WhiskyBar.mp4'
+//import video1 from '../../../public/Videos/WhiskyBar.mp4'
 
 export const Landing = () => {
 
@@ -20,7 +20,7 @@ export const Landing = () => {
                     <img src={Logo} alt='icon'/>
                 </div>
                 <div className='background_video'>
-                    <video playsinline autoplay muted src={video1}></video>
+                    <img src={pic1} alt="picture" />
                 </div>
                 <ul >
                     {newInfo.map( (item,index) => (
