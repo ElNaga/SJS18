@@ -24,3 +24,6 @@ const getOne = async (id) => {
 const updateOne = async (id,data) => {
     return Movie.updateOne({_id: id}, data)
 }
+const updatePartial = async (id,data) => {
+    return Movie.updateOne({_id: id}, data)
+}
