@@ -7,6 +7,7 @@ function App() {
     <div className="App">
       <Routes>
         {/* <Route path="/coffee" element={}/> */}
+        <Route path="/auth/add-item" />
         <Route/>
       </Routes>
       <Landing />
