@@ -5,7 +5,7 @@
     - make token with email as payload called "link"
     - send a mail to 'email' with /api/v1/auth/forgot-password?info="link"
     - the link sent to the user would be a GET method... so the info needs to be in query
-    =>??? (STEP3)
+    =>??? (STEP2)
     - POST method with token and new password [OR email,password and token as payload | check mail again]
 
 3. Reset password: 
