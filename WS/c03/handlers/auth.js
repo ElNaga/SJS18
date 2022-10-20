@@ -1,5 +1,6 @@
 const bcrypt = require('bcryptjs')
 const user = require('../pkg/user')
+const jwt = require('jsonwebtoken')
 
 const create = async(req, res) => {
 try {
@@ -30,8 +31,30 @@ try {
 }
 }
 
-const login = (req, res) => {
-   return  res.send('Ok')
+const login = async (req, res) => {
+    try {
+            // 1. проверка дали корисникот со даден email постои
+            let u = await user.getUserByEmail(req.body.email);
+            if(!u) {
+                return res.status(405).send('Bad login credentials')
+            }
+            // 2. проверка дали внесената лозинка се совпаѓа со таа од базата
+            if( !bcrypt.compareSync(req.body.password, u.password) ) {
+                return res.status(405).send('Bad login credentials')
+            }
+            // 3. Генерирај токен и испрати го
+            let payload = {
+                uid: u._id,
+                email: u.email,
+                full_name: u.full_name
+            };
+            let token = jwt.sign(payload, 'secret')
+            return res.status(200).send({token});
+    } catch (error) {
+        console.log(error);
+        return res.status(500).send('Internal server error')
+    }
+
 }
 const forgotPassword = (req, res) => {
     return res.send('Ok')
@@ -40,7 +63,8 @@ const resetPassword = (req, res) => {
    return  res.send('Ok')
 }
 const validate = (req, res) => {
-   return  res.send('Ok')
+    console.log(req.auth);
+   return  res.send(req.auth).status(200)
 }
 
 module.exports = {
