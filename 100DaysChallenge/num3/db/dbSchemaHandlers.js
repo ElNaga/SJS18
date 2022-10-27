@@ -26,9 +26,21 @@ const getAll = async () => {
 const getOne = async (id) => {
     return Menu.findOne({_id: id})
 }
+const getCategory = async (cate) => {
+    return Menu.findOne({category: cate})
+}
 const updateOne = async (id,data) => {
     return Menu.updateOne({_id: id}, data)
 }
 const updatePartial = async (id,data) => {
     return Menu.updateOne({_id: id}, data)
+}
+
+module.exports = {
+    create,
+    getAll,
+    getCategory,
+    getOne,
+    updateOne,
+    updatePartial
 }

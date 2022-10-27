@@ -1,8 +1,7 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 
 
-const initDB = () => {
-    // const dsn = 'mongodb://mongo:27017/somamenu';
+const init = () => {
     const dsn = 'mongodb+srv://elnaga:Kuchki_3site@cluster0.rvgmx.mongodb.net/baza1?retryWrites=true&w=majority';
 mongoose.connect (
     dsn,
@@ -15,5 +14,5 @@ mongoose.connect (
 }
 
 module.exports  = {
-    initDB
+    init
 }

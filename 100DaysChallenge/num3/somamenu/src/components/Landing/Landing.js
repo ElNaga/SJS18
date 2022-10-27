@@ -34,9 +34,15 @@ export const Landing = () => {
     const [newInfo, setNewInfo]  = useState(Data.map( (item) => item.category ).filter( (value, index, self) => {
         return self.indexOf(value) === index }))
 
+
+    const [showItemFromMenu, setShowItemFromMenu] = useState(False)
+
+    const showItemsInCategory = () => {
+        // get items from category from DB
+    }
     
     return (
-        <div className='wrapper' >
+        <div className='wrapperLanding' >
             <div className='wrapper2'>
                 <div className="logo_cnt">
                     <img src={Logo} alt='icon'/>
