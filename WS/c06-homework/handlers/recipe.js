@@ -53,16 +53,17 @@ const updateThis = async (req, res) => {
         let dataUpdate = {
             ...req.body,
             editedDate: Date.now(),
-            edited: true
+            edited: true // moze so sporedba na editedDate so dateCreated
+            //cqrs pattern 
         }
         // console.log(req.params.body)  <------ ahahahahahhahahahahaah
         // console.log("------this is uid-------")
         // console.log(req.auth.uid)
         // console.log("------this is uid-------")
         let up = await recipe.update(req.params.id, req.auth.uid, dataUpdate);
-        if (!up) {
+        if (up.modifiedCount == 0) {
             return res.status(404).send('Error 404. Record not found!');
-        } //else {console.log(up)}
+        } else {console.log(up)}
         return res.status(204).send('updated')
     } catch (err) {
         if (err) {
@@ -74,7 +75,7 @@ const updateThis = async (req, res) => {
 const deleteOne = async (req, res) => {
     try {
         let del = await recipe.remove(req.params.id, req.auth.uid);
-        if (!del) {
+        if (del.modifiedCount == 0) {
             return res.status(404).send('Error 404. Record not found!');
         }
         return res.status(204).send('');

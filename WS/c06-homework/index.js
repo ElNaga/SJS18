@@ -1,17 +1,11 @@
-
-
 const express = require('express');
 const {expressjwt: ejwt} = require('express-jwt');
 const db = require('./pkg/db')
 const config = require('./pkg/config');
-// const { application } = require('express');
-// const auth = require("./pkg/auth)")
 const auth = require('./handlers/auth')
-// const recipe = require("./pkg/recipe")
 const recipe = require("./handlers/recipe")
 
-
-
+db.init(); //connect to DB
 
 const api = express();
 api.use(express.json());
@@ -26,7 +20,6 @@ api.use(ejwt({
     ]
 }));
 
-db.init(); //connect to DB
 // routes:
 api.post("/", async (rq,rs) => {return rs.send('ok token')} );
 api.post("/login",  auth.login);

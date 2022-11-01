@@ -3,9 +3,9 @@ const mongoose = require('mongoose')
 const User = mongoose.model(
     'users',
     {
-        email: String,
-        name: String,
-        password: String,
+        email: { type: String, required: true },
+        name: { type: String, required: true },
+        password: { type: String, required: true },
         dateCreated: {type: Date, default: Date.now}
     },
     'users'
