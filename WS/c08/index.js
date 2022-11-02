@@ -6,6 +6,7 @@ const storage = require('./handlers/storage');
 
 const api = express();
 api.use(fileUpload());
+// api.use(fileUpload({limits: { fileSize: 10 * 1024 * 1024 }})); // posle kje proverime if(!truncated) mada nema potreba...
 
 api.post('/api/v1/storage', storage.upload);
 api.get('/api/v1/storage/:file', storage.download);
