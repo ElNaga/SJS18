@@ -8,7 +8,7 @@ const upload = async (req, res) => {
         return res.status(413).send('Error 413! Payload too large!');
     }
     console.log('Upload... Files less then 10... Continue');
-    let files4U = JSON.parse(JSON.stringify(req.files))
+    // let files4U = JSON.parse(JSON.stringify(req.files))
     let numOfFiles = Object.keys(req.files).length;
 
     for (const property in req.files) {
