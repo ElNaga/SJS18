@@ -35,10 +35,10 @@ api.use(express.json());
 
 
 
-api.use(jwt({
-    algorithms: ['HS256'],
-    secret: get('service').jwt_secret
-}));
+// api.use(jwt({
+//     algorithms: ['HS256'],
+//     secret: get('service').jwt_secret
+// }));
 
 // const User = mongoose.model(
 //     'user',
