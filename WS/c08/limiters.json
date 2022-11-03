@@ -1,4 +1,4 @@
 {
     "imageTypes": ["image/apng","image/avif","image/gif","image/jpeg","image/png","image/svg","image/webp","image/bpm","image/ico","image/tiff"],
-    "sizeLimit": 1000000
+    "sizeLimit": 10485760
 }
