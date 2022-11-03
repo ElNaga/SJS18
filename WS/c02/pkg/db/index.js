@@ -1,7 +1,14 @@
 const mongoose = require('mongoose');
+const config = require("../config")
 
 const init = () => {
-    const dsn = '';
+    const url = config.get('db').url
+    // console.log(url)
+    const password = config.get('db').password
+    const username = config.get('db').username
+    const dbName = config.get('db').dbName
+    const dsn = `mongodb+srv://${username}:${password}@${url}/${dbName}?retryWrites=true&w=majority`;
+
     mongoose.connect(
         dsn,
         err => {
