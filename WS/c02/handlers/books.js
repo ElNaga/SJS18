@@ -4,6 +4,7 @@ const books = require('../pkg/books');
 const getAll = async ( req, res) => {
 
     try {
+        console.log(req.headers)
         let data = await books.getAll();
         res.send(data);
     } catch (error) {
