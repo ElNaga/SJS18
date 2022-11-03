@@ -1,11 +1,12 @@
 const fetch = require('node-fetch')
+const key = require('../APIcode.json')
 
 
     let localCache = null;
     let cacheTime = null;
     
 const getCity = async (req, res) => {
-    let APIkey =  '9dd83bedf896a45294f8653aed0679b5';
+    let APIkey = key.APIcode;
     let url = `https://api.openweathermap.org/data/2.5/weather?q=${req.params.city}&appid=${APIkey}`
 
     let caches = [{}];
