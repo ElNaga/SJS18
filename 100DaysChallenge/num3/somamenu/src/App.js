@@ -23,7 +23,7 @@ function App() {
       }}>Change</button>
       {/* {click === 1 && <Landing/>} */}
       {/* {click === 2 && <Navbar/>} */}
-      {show === 'Menu' && <Landing showWhat={setShow}/>}
+      {show === 'Menu' && <Landing showWhat={setShow}/> }
       {show !== 'Menu' && <image showWhat={setShow}/>}
     </div>
   );
