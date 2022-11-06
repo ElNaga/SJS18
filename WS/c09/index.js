@@ -1,5 +1,5 @@
 const express = require('express');
-const weather=require('./handlers/weatherCopy');
+const weather=require('./handlers/weather');
 
 const api = express();
 
