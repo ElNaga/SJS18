@@ -35,7 +35,7 @@ export const Landing = () => {
         return self.indexOf(value) === index }))
 
 
-    const [showItemFromMenu, setShowItemFromMenu] = useState(False)
+    const [showItemFromMenu, setShowItemFromMenu] = useState(false)
 
     const showItemsInCategory = () => {
         // get items from category from DB
