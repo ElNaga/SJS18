@@ -12,6 +12,16 @@ import pic3 from './soma-nadvor.png'
 import { useEffect } from 'react';
 //import video1 from '../../../public/Videos/WhiskyBar.mp4'
 
+let mrn = Data
+
+export const Items = ({category}) => {
+    return (
+        <div>
+            this is {category}
+        </div>
+    )
+}
+
 export const Landing = () => {
 
     let i =0;
@@ -30,12 +40,17 @@ export const Landing = () => {
     useEffect( () => {
         randomImage()
     },[] )
+    
+    
 
-    const [newInfo, setNewInfo]  = useState(Data.map( (item) => item.category ).filter( (value, index, self) => {
+    const [newInfo, setNewInfo]  = useState(mrn.map( (item) => item.category ).filter( (value, index, self) => {
         return self.indexOf(value) === index }))
 
 
     const [showItemFromMenu, setShowItemFromMenu] = useState(false)
+
+    const [categ, setCateg] = useState(0);
+    // console.log(categ)
 
     const showItemsInCategory = () => {
         // get items from category from DB
@@ -50,16 +65,22 @@ export const Landing = () => {
                 <div className='background_video'>
                     <img src={selected} alt="picture" />
                 </div>
-                <ul >
-                    {newInfo.map( (item,index) => (
-                        <li className='menu_1' key={index}> 
-                            <a style={{textDecoration: 'none',
-                                   color: 'LightGray'
-                        }} href="/">{item}</a>
-                        </li>
+                {categ === 0 && 
+                    <ul >
+                        {newInfo.map( (item,index) => (
+                            <li className='menu_1' key={index}> 
+                            
+                                <a onClick={ () => {setNewInfo(item); setCateg(item)}} style={{textDecoration: 'none',
+                                       color: 'LightGray'
+                            }} >{item}</a>
+                            </li>
+    
+                        ))}
+                    </ul>
 
-                    ))}
-                </ul>
+                }
+                {categ !== 1 && <Items categ={categ}/>}
+                {console.log(categ)}
             </div>
 
         </div>
