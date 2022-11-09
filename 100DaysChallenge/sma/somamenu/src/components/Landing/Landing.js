@@ -52,9 +52,9 @@ export const Landing = ({setShow}) => {
             {categ === 0 &&
                 <ul >
                     {newInfo.map((item, index) => (
-                        <li className='menu_1' key={index}>
+                        <li onClick={() => {  setShow(item) }} className='menu_1' key={index}>
 
-                            <a onClick={() => {  setShow(item) }} style={{
+                            <a  style={{
                                 textDecoration: 'none',
                                 color: 'LightGray'
                             }} >{item}</a>

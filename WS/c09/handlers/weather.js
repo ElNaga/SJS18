@@ -11,8 +11,8 @@ const getCity = async (req, res) => {
         
         let APIkey = key.APIcode;
         let url = `https://api.openweathermap.org/data/2.5/weather?q=${req.params.city}&appid=${APIkey}`
-        const cty = () => (req.params.city);
-        if (!caches[0]) {
+        // const cty = () => (req.params.city);
+        if (!caches[0]) { // if (caches.length === 0) 
             let city = req.params.city;
             let data = await (fetch(url));
             let cache = await data.json();
@@ -37,9 +37,9 @@ const getCity = async (req, res) => {
                     city,
                     cache,
                     cacheTime
-                }
+                };
                 caches.push(toPushObj);
-                return res.send(toPushObj.cache)
+                return res.send(toPushObj.cache);
             }
         } else {
             for (let i = 0; i < caches.length; i++) {
@@ -62,15 +62,10 @@ const getCity = async (req, res) => {
     } catch (err) {
         if (err) {
             console.log(err);
-            return res.status(500).send("Internal server error");
-            
+            return res.status(500).send("Internal server error");          
         }
     }
 }
-    
-
-
-
 
 module.exports = {
     getCity
