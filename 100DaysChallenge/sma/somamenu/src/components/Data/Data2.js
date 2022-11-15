@@ -1,47 +1,76 @@
 export const Data2 = {
-    "Еспресо": {
-    "product": "Еспресо",
-    "price": 70,
-    "category": "Кафе",
-    "description": "",
-    "linkDes": "",
-    "flag": false
-  },"Макијато":{
-    "product": "Макијато",
-    "price": 90,
-    "category": "Кафе",
-    "description": "",
-    "linkDes": "",
-    "flag": false
-  },"Мало макијато":{
-    "product": "Мало макијато",
-    "price": 80,
-    "category": "Кафе",
-    "description": "",
-    "linkDes": "",
-    "flag": false
-  },"Карамел макијато":{
-    "product": "Карамел макијато",
-    "price": 120,
-    "category": "Кафе",
-    "description": "",
-    "linkDes": "",
-    "flag": false
-  },"Цеден портокал":{
-    "product": "Цеден портокал",
-    "price": 140,
-    "category": "Свежо цедено",
-    "description": "",
-    "linkDes": "",
-    "flag": false
-  }, "Кока кола":{
-    "product": "Кока кола",
-    "price": 100,
-    "category": "Безалкохолни пијалоци",
-    "description": "",
-    "linkDes": "",
-    "flag": false
-  },
+    "Кафе": {
+      "Еспресо": {
+      "price": 70,
+      "description": "",
+      "linkDes": "",
+      "flag": false
+      }, 
+      "Макијато": {
+        "price": 90,
+        "description": "",
+        "linkDes": "",
+        "flag": false
+      },"Мало Макијато": {
+        "price": 80,
+        "description": "",
+        "linkDes": "",
+        "flag": false
+        }, 
+        "Карамел макијато": {
+          "price": 120,
+          "description": "",
+          "linkDes": "",
+          "flag": false
+        }
+  }
+}
+  // },"Кафе":{
+  //   "product": "Макијато",
+  //   "price": 90,
+  //   "category": "Кафе",
+  //   "description": "",
+  //   "linkDes": "",
+  //   "flag": false
+  // },"Кафе":{
+  //   "product": "Мало макијато",
+  //   "price": 80,
+  //   "category": "Кафе",
+  //   "description": "",
+  //   "linkDes": "",
+  //   "flag": false
+  // },"Кафе":{
+  //   "product": "Карамел макијато",
+  //   "price": 120,
+  //   "category": "Кафе",
+  //   "description": "",
+  //   "linkDes": "",
+  //   "flag": false
+  // },"Свежо цедено":{
+  //   "product": "Цеден портокал",
+  //   "price": 140,
+  //   "category": "Свежо цедено",
+  //   "description": "",
+  //   "linkDes": "",
+  //   "flag": false
+  // }, "Безалкохолни пијалоци":{
+  //   "product": "Кока кола",
+  //   "price": 100,
+  //   "category": "Безалкохолни пијалоци",
+  //   "description": "",
+  //   "linkDes": "",
+  //   "flag": false
+  // },
+
+
+  // Kafe: {
+  //   espreso: {
+  //     price: 70,
+  //     description: ''
+  //   }
+  // }
+
+
   // {
   //   "product": "Цеден лимон",
   //   "price": 130,
@@ -113,5 +142,5 @@ export const Data2 = {
   //   "linkDes": "",
   //   "flag": true
   // }
-}
+// }
   

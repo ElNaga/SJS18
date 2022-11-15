@@ -30,7 +30,7 @@ function App() {
       {/* {click === 2 && <Navbar/>} */}
       <Logo/>
       {show === 'Menu' && <Landing setShow={setShow}/>}
-      {show === 'Кафе' && <Coffee setShow={setShow} Data={Data2}/>}
+      {show === 'Кафе' && <Coffee show={show} setShow={setShow} Data={Data2}/>}
 
     </div>
   );

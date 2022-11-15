@@ -1,7 +1,7 @@
 import { useState } from "react"
 
 
-export const Coffee = ({ setShow, Data }) => {
+export const Coffee = ({ show, setShow, Data }) => {
 
 
     const [items, setItems] = useState(Data);
@@ -10,24 +10,27 @@ export const Coffee = ({ setShow, Data }) => {
 
     return (
         <div >
-            <ul >
-                <li onClick={() => {  setShow("Menu") }} className="backBtn">
+            <ul>
+                <li onClick={() => { setShow("Menu") }} className="backBtn">
                     Назад
                 </li>
-                {Object.keys(items).map((item, index) => (
+                {Object.keys(Data[show]).map((item, index) => (
                     <li className="menu_li menu_2" key={index}>
 
-<div className="wrapperHeadPrice">
+                        <div className="wrapperHeadPrice">
 
-                        <div className="itemName">
-                            {item}
+                            <div className="itemName">
+                                {console.log(show)}
+                                {/* {console.log(Data)} */}
+                                {console.log(Data[`${show}`][`${item}`].price)}
+                                {console.log(item["price"])}
+                                {console.log(item)}
+                                {item}
+                            </div>
+                            <div className="itemPrice">
+                                {Data[`${show}`][`${item}`].price} ден.
+                            </div>
                         </div>
-                        <div className="itemPrice">
-                            {items[item].price} </div>
-</div>
-
-
-
                     </li>
                 ))}
             </ul>
