@@ -1,0 +1,17 @@
+{
+    "service": {
+        "port": 10000,
+        "jwt_secret": "secret"
+    },
+    "db": {
+        "url": "cluster0.rvgmx.mongodb.net",
+        "username": "elnaga",
+        "password": "Kuchki_3site",
+        "dbName": "baza1"
+    },
+    "mailer": {
+        "username": "Xell Naga",
+        "key": "c75ddf88fed79e6fa1fbe29faf024332-48c092ba-6ff6087c",
+        "domain": "sandboxbbfabf8881d44e00abb4223867ee96a1.mailgun.org"
+    }
+}
