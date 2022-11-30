@@ -40,7 +40,7 @@ const Center = styled.div`
 `
 
 const Logo = styled.h1`
-    font-weight: bold;
+    font-weight: bolder;
 `
 
 const Right = styled.div`
