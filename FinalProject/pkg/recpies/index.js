@@ -22,7 +22,22 @@ const create = (data) => {
     return r.save();
 }
 
-const getByDate = ()
+const getByDate = async () => {
+    return Recipe.find({}).sort({published_on: -1});
+}
+
+const getByFavorited = async () => {
+    return Recipe.find({}).sort({numberFavorited: -1});
+}
+
+const getByCategory = async (data) => {
+    return Recipe.find({category: data});
+}
+
+const getOne = async (id) => {
+    return Recipe.find({_id: id});
+}
+
 
 const update = async (id, uid, data) => {
     return Recipe.updateOne({_id: id, author_id: uid}, data);
@@ -35,5 +50,11 @@ const remove = async (id, uid) => {
 
 
 module.exports = {
-
+    create,
+    getByDate,
+    getByFavorited,
+    getByCategory,
+    getOne,
+    update,
+    remove
 }
