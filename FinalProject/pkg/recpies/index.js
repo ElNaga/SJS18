@@ -17,13 +17,21 @@ const Recipe = mongoose.model(
     'recipes'
 );
 
-const create = (data) => {
-    let r = new Recipe(data);
+const create = (id, data) => {
+    let object = {
+        author_id: id,
+        ... data
+    }
+    let r = new Recipe(object);
     return r.save();
 }
 
 const getByDate = async () => {
     return Recipe.find({}).sort({published_on: -1});
+}
+
+const getAll = async () => {
+    return Recipe.find({});
 }
 
 const getByFavorited = async () => {
@@ -51,6 +59,7 @@ const remove = async (id, uid) => {
 
 module.exports = {
     create,
+    getAll,
     getByDate,
     getByFavorited,
     getByCategory,

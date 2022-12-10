@@ -1,5 +1,7 @@
+const categories = ['Breakfast', 'Brunch', 'Lunch', 'Dinner']
+
 const checkStringOfCategory = async (category) => {
-    if (category === 'Breakfast' || 'Brunch' || 'Lunch' || 'Dinner') {
+    if (categories.includes(category)) {
         return true
     }
     return false

@@ -9,18 +9,20 @@ db.init(); // initialize connection to DB
 const api = express();
 api.use(express.json()); // use json files in the api??
 
-// api.use(jwt({
-//     algorithms: ['HS256'],
-//     secret: config.get('security').jwt_secret
-// }).unless({
+api.use(jwt({
+    algorithms: ['HS256'],
+    secret: config.get('security').jwt_secret
+}).unless({
 //     // path not needed for authetication
-
-//     // 3. api get recipieByDateOfCreation
-
-//     // 4. api get recipeByFavorites
-
-//     // 5. api get recipeByCategory  
-// }))
+    path: [
+// 3. api get recipieByDateOfCreation
+        '/api/v1/recipes',
+// 4. api get recipeByFavorites
+        '/api/v1/recipes/popular',
+// 5. api get recipeByCategory
+        '/api/v1/recipes:category'
+    ]
+}))
 
 // 1. api Create recipe
 api.post ('/api/v1/recipes', recipes.createRecipe);
@@ -32,10 +34,9 @@ api.get ('/api/v1/recipes', recipes.recipesByDate);
 // 4. api get recipeByFavorites
 api.get ('/api/v1/recipes/popular', recipes.recipesByFave);
 // 5. api get recipeByCategory
-api.get ('/api/v1/recipes/category', recipes.recipesByCategory);
+api.get ('/api/v1/recipes:category', recipes.recipesByCategory);
 // 6. api get 1 recipe
 api.get ('/api/v1/recipes:id', recipes.recipesOne);
-
 // 7. api remove recipe
 api.delete ('/api/v1/recipes:id', recipes.deleteOne);
 
@@ -46,4 +47,4 @@ api.listen( PORT, (err) => {
         return console.error(err);
     }
     console.log(`Service [recipes] started on port ${PORT}`)
-} )
+} );
