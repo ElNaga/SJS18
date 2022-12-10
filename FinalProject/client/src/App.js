@@ -4,6 +4,7 @@ import { Footer } from "./components/Footer/Footer";
 import { Login } from "./components/Login/Login";
 import { MyProfile } from "./components/MyProfile/MyProfile";
 import { Navbar } from "./components/Navbar/Navbar";
+import { RecipeCard } from "./components/RecipeCard/RecipeCard";
 
 
 function App() {
@@ -11,7 +12,7 @@ function App() {
     <div className="App">
         <div className="content_wrap">
             <Navbar/>
-            <EditRecipe/>
+            <RecipeCard/>
             <Footer/>
         </div>
     </div>
