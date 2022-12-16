@@ -9,7 +9,7 @@
     display: flex;
     justify-content: center;
     font-family: "Roboto Slab", serif;
-    height: 76vh;
+    flex-grow: 1;
 }
 
 .toCenterWrapper {
