@@ -42,6 +42,10 @@ const getByCategory = async (data) => {
     return Recipe.find({category: data});
 }
 
+const getByAuthor = async (data) => {
+    return Recipe.find({author_id: data});
+}
+
 const getOne = async (id) => {
     return Recipe.find({_id: id});
 }
@@ -65,5 +69,6 @@ module.exports = {
     getByCategory,
     getOne,
     update,
-    remove
+    remove,
+    getByAuthor
 }

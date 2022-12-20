@@ -35,9 +35,11 @@ api.get ('/api/v1/recipes', recipes.recipesByDate);
 api.get ('/api/v1/recipes/popular', recipes.recipesByFave);
 // 5. api get recipeByCategory
 api.get ('/api/v1/recipes:category', recipes.recipesByCategory);
-// 6. api get 1 recipe
+// 6. api get recipeByCategory
+api.get ('/api/v1/recipes:author', recipes.recipesByAuthor);
+// 7. api get 1 recipe
 api.get ('/api/v1/recipes:id', recipes.recipesOne);
-// 7. api remove recipe
+// 8. api remove recipe
 api.delete ('/api/v1/recipes:id', recipes.deleteOne);
 
 const PORT = process.env.PORT || config.get("services").recipes.port;

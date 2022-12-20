@@ -65,6 +65,16 @@ const recipesByCategory = async (req, res) => {
     }
 }
 
+const recipesByAuthor = async (req, res) => {
+    try {
+        let data =  await recipes.getByAuthor(req.params.author);
+        res.status(200).send(data);
+    } catch (err) {
+        console.log(err);
+        return res.status(500).send('Internal Server Error!');
+    }
+}
+
 const recipesOne = async (req, res) => {
     try {
         let data =  await recipes.getOne(req.params.id);
@@ -95,5 +105,6 @@ module.exports = {
     recipesByFave,
     recipesByCategory,
     recipesOne,
+    recipesByAuthor,
     deleteOne
 }
