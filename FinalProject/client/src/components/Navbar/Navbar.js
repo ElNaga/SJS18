@@ -1,7 +1,12 @@
 import './Navbar.css'
 import logo from '../../assets/logo_color.svg'
+import { useState } from 'react'
+import { LoggedOutButtons } from '../LoggedOutButtons/LoggedOutButtons'
+import { LoggedInButtons } from '../LoggedInButtons/LoggedInButtons'
 
 export const Navbar = () => {
+
+    const [loged, setLoged] = useState(false);
 
     return (
         <div className="overWrapper">
@@ -20,12 +25,8 @@ export const Navbar = () => {
                         <li className="foodCategory">DINNER</li>
                     </ul>
                 </div>
-                <div className="logButtons">
-                    <ul>
-                        <li className="logIn">LOG IN</li>
-                        <li className="orangeOr">or</li>
-                        <li className="createAccount">CREATE ACCOUNT</li>
-                    </ul>
+                <div>
+                    {loged ? <LoggedInButtons/> : <LoggedOutButtons/>}
                 </div>
             </div>
         </div>
