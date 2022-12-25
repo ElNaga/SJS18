@@ -10,22 +10,35 @@ import { Home } from "./components/Home/Home";
 import { Category } from "./components/Category/Category";
 
 // Router
-import {Routes, Route} from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
+
+import './App.css'
 
 function App() {
   return (
     <div className="App">
-        <div className="content_wrap">
-            <Navbar/>
-             
-            <Routes>
-              <Route path="/" element={<Home/>}/>
-              <Route path="/login" element={<Login/>}/>
-              <Route path="/create-account" element={<CreateAccount/>}/>
-            </Routes>
+      <div className="content_wrap">
+        <Navbar />
 
-            <Footer/>
-        </div>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/create-account" element={<CreateAccount />} />
+          <Route path="/:category" element={<Category />} />
+          <Route path="/myprofile" element={<MyProfile />} />
+          <Route path="/myrecipes" element={<MyRecipe />} />
+          <Route path="/edit-recipe/new" element={<MyRecipe />} />
+          <Route path="/edit-recipe/:id" element={<MyRecipe />} /> /*
+
+          {/* <Route path="/editrecipe/:id" element={<EditRecipe />}>
+            <Route index element={<Users users={users} />} />
+            <Route path=":id" element={<User />} />
+          </Route> */}
+
+        </Routes>
+
+        <Footer />
+      </div>
     </div>
   );
 }

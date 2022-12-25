@@ -9,7 +9,7 @@
     display: flex;
     justify-content: center;
     font-family: "Roboto Slab", serif;
-    height: 75vh;
+    flex: 1;
 }
 
 .create__wrapper {
@@ -45,7 +45,7 @@ Create account Title
 
 .create__centerContent {
     display: flex;
-    height: 80vh;
+
 }
 /*__________________________*\
 Create account Text Content
