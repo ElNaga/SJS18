@@ -1,4 +1,8 @@
 import './Navbar.css'
+
+import {useSelector, useDispatch} from 'react-redux'
+import {setLogin} from '../../slices/loggedInSlice'
+
 import logo from '../../assets/logo_color.svg'
 import { useState } from 'react'
 import { LoggedOutButtons } from '../LoggedOutButtons/LoggedOutButtons'
@@ -6,7 +10,9 @@ import { LoggedInButtons } from '../LoggedInButtons/LoggedInButtons'
 
 export const Navbar = () => {
 
-    const [loged, setLoged] = useState(false);
+    
+    const loggedIn = useSelector( state => state.loggedIn.loggedIn);
+    const dispatch = useDispatch();
 
     return (
         <div className="overWrapper">
@@ -26,7 +32,7 @@ export const Navbar = () => {
                     </ul>
                 </div>
                 <div>
-                    {loged ? <LoggedInButtons/> : <LoggedOutButtons/>}
+                    {loggedIn ? <LoggedInButtons/> : <LoggedOutButtons/>}
                 </div>
             </div>
         </div>

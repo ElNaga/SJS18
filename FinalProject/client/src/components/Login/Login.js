@@ -1,7 +1,19 @@
 import './login.css'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import {useSelector, useDispatch} from 'react-redux'
+import {setLogin} from '../../slices/loggedInSlice'
 
 export const Login = () => {
+
+    const loggedIn = useSelector( state => state.loggedIn.loggedIn);
+    const dispatch = useDispatch();
+
+    const [userInfo, setUserInfo] = useState()
+
+    sendLoginInfo( async () => {
+        const response = await fetch ('http://172.0.0.1/api/auth/v1/login')
+    });
+
     return (
         <div className='login__wrapper'>
             <div className='toCenterWrapper'>
