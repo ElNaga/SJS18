@@ -66,10 +66,24 @@ const validate = (req, res) => {
     return res.status(200).send(req.auth); // return the token payload
 };
 
+const updateUserInfo = async (req, res) => {
+    try {
+        user.update(req.auth.email,req.body)
+        return res.status(204).send("resource updated succesfully"); // return the token payload
+    } catch (err) {
+        console.log(err);
+        return res.status(500).send('Internal server error');
+    }
+    // console.log(req.auth);
+    // let u = await user.getUserByEmail(req.body.email);
+    
+};
+
 module.exports = {
     create,
     login,
     forgotPassword,
     resetPassword,
-    validate
+    validate,
+    updateUserInfo
 };

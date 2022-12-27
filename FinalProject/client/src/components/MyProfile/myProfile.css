@@ -9,7 +9,7 @@
     display: flex;
     justify-content: center;
     font-family: "Roboto Slab", serif;
-    height: 80%;
+    flex: 1;
 }
 
 .myprofile__wrapper {
@@ -45,7 +45,6 @@ myprofile account Title
 
 .myprofile__avatar {
     display: flex;
-    height: 80vh;
 }
 /*__________________________*\
 myprofile account Text Content

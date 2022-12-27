@@ -30,6 +30,8 @@ api.post('/api/v1/auth/reset-password', auth.resetPassword);
 
 api.post('/api/v1/auth/validate-token', auth.validate);
 
+api.put('/api/v1/auth/user-update', auth.updateUserInfo);
+
 api.use(function (err, req, res, next) {
     if (err.name === "UnauthorizedError") {
         res.status(401).send("Invalid token...");
@@ -65,7 +67,7 @@ api.listen(config.get('services').auth.port, err => {
 
 // -----------
 
-//     data hashing
+// data hashing
 
 // 2 ? n = 8
 // 2 ? m = 20

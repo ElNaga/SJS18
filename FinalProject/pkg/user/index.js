@@ -5,7 +5,9 @@ const User = mongoose.model(
     {
         email: String,
         password: String,
-        full_name: String
+        first_name: String,
+        last_name: String,
+        date_birth: Date
     },
     'users'
 );
@@ -19,7 +21,12 @@ const getUserByEmail = async (email) => {
     return User.findOne({email});
 };
 
+const update = async (email, data) => {
+    return User.updateOne({email: email}, data);
+};
+
 module.exports = {
     create,
-    getUserByEmail
+    getUserByEmail,
+    update
 };

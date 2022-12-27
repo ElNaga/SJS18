@@ -1,5 +1,6 @@
 import './login.css'
 import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import {useSelector, useDispatch} from 'react-redux'
 import {setLogin} from '../../slices/loggedInSlice'
 
@@ -8,11 +9,24 @@ export const Login = () => {
     const loggedIn = useSelector( state => state.loggedIn.loggedIn);
     const dispatch = useDispatch();
 
+    let navigate = useNavigate();
+    const routeChangeHome = () =>{ 
+        let path = `/`; 
+        navigate(path);
+      }
+
+    const logMeIn = () => {
+        dispatch(setLogin( true ));
+        routeChangeHome();
+    }
+
+
     const [userInfo, setUserInfo] = useState()
 
-    sendLoginInfo( async () => {
+    const sendLoginInfo = ( async () => {
         const response = await fetch ('http://172.0.0.1/api/auth/v1/login')
     });
+
 
     return (
         <div className='login__wrapper'>
@@ -32,7 +46,9 @@ export const Login = () => {
                             <input className='emailInput' type="email" placeholder='user@domain.com'/>
                             <label className='passwordLabel' htmlFor="password">Password</label>
                             <input className='passwordInput' type="password" placeholder='*****'/>
-                            <button className='loginButton'>LOG IN</button>
+                            <button className='loginButton'
+                                onClick={logMeIn}
+                            >LOG IN</button>
                         </div>
                     </div>
                 </div>

@@ -7,11 +7,11 @@ const loggedInSlice = createSlice({
         loggedIn: false
     },
     reducers: {
-        setLogin(state, action, statusLogin){
-            state.loggedIn = statusLogin
+        setLogin(state, action){
+            state.loggedIn = action.payload
         }
     }
 })
 
 export const {setLogin} = loggedInSlice.actions
-export default counterSlice.reducer
+export default loggedInSlice.reducer
