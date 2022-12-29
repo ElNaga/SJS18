@@ -4,12 +4,17 @@ import {useSelector, useDispatch} from 'react-redux'
 import {setLogin} from '../../slices/loggedInSlice'
 
 import logo from '../../assets/logo_color.svg'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { LoggedOutButtons } from '../LoggedOutButtons/LoggedOutButtons'
 import { LoggedInButtons } from '../LoggedInButtons/LoggedInButtons'
 
 export const Navbar = () => {
 
+    useEffect( () => {
+
+        return console.log('mounitng nvabr')
+
+    },[] )
     
     const loggedIn = useSelector( state => state.loggedIn.loggedIn);
     const dispatch = useDispatch();

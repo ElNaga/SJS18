@@ -30,7 +30,7 @@ app.use(
     proxy(
         'http://127.0.0.1:10003',
         {
-            proxyReqPathResolver: (req) => `http://127.0.0.1:10001/api/v1/posts${req.url}`
+            proxyReqPathResolver: (req) => `http://127.0.0.1:10001/api/v1/recipes${req.url}`
         }
     )
 );

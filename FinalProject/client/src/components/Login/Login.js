@@ -9,24 +9,61 @@ export const Login = () => {
     const loggedIn = useSelector( state => state.loggedIn.loggedIn);
     const dispatch = useDispatch();
 
+    const [token, setToken] = useState('aleksandar');
+
     let navigate = useNavigate();
     const routeChangeHome = () =>{ 
         let path = `/`; 
         navigate(path);
       }
 
-    const logMeIn = () => {
-        dispatch(setLogin( true ));
-        routeChangeHome();
+
+    const initData = {
+        email: '',
+        password: '',
     }
 
+    const [loginData, setLoginData] = useState(initData);
+    const [isResponseOk, setIsResponseOk] = useState(false);
 
-    const [userInfo, setUserInfo] = useState()
+    const dataChange = (e) => {
+        setLoginData({
+            ...loginData,
+            [e.target.name]: e.target.value
+        })
+    }
 
-    const sendLoginInfo = ( async () => {
-        const response = await fetch ('http://172.0.0.1/api/auth/v1/login')
-    });
+    const sendLoginInfo = async (email, password) => {
+        try {            
+            const response = await fetch ('/api/v1/auth/login',
+            {
+                method: 'post',
+                body: JSON.stringify({email, password}),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            let rez = await response.json();
+            return rez;
 
+        } catch (err) {
+            throw err;// throws to log me in func
+        }
+    };
+
+    const logMeIn = async () => {
+        try {
+            const res = await sendLoginInfo(loginData.email, loginData.password);
+            console.log(res)
+            // if (res.ok) {
+                dispatch(setLogin( true ));
+                routeChangeHome();
+                console.log(token)
+            // }
+        } catch (err){ 
+            console.log(err);
+        }
+    }
 
     return (
         <div className='login__wrapper'>
@@ -43,9 +80,9 @@ export const Login = () => {
                     <div className='centerContent__right__wrapper'>
                         <div className='centerContent__right'>
                             <label className='emailLabel' htmlFor="email"  >Email</label>
-                            <input className='emailInput' type="email" placeholder='user@domain.com'/>
+                            <input className='emailInput' type="email" placeholder='user@domain.com' name='email' value={loginData.email} onChange={dataChange}/>
                             <label className='passwordLabel' htmlFor="password">Password</label>
-                            <input className='passwordInput' type="password" placeholder='*****'/>
+                            <input className='passwordInput' type="password" placeholder='*****' name='password' value={loginData.password} onChange={dataChange}/>
                             <button className='loginButton'
                                 onClick={logMeIn}
                             >LOG IN</button>

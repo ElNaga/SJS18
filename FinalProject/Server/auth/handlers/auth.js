@@ -43,7 +43,6 @@ const login = async (req, res) => {
         let payload = {
             uid: u._id,
             email: u.email,
-            full_name: u.full_name
         };
         let token = jwt.sign(payload, config.get('security').jwt_secret);
         return res.status(200).send({token});
