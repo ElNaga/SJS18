@@ -9,12 +9,22 @@ import { RecipeCard } from "./components/RecipeCard/RecipeCard";
 import { Home } from "./components/Home/Home";
 import { Category } from "./components/Category/Category";
 
+import {useSelector, useDispatch} from 'react-redux'
+import {setLogin} from './slices/loggedInSlice'
+
 // Router
 import { Routes, Route } from 'react-router-dom'
 
 import './App.css'
 
 function App() {
+
+  let existingToken = localStorage.getItem("token");
+  if (existingToken) {
+    setLogin(true)
+    console.log("Am i here?")
+  }
+
   return (
     <div className="App">
       <div className="content_wrap">

@@ -12,12 +12,14 @@ export const Navbar = () => {
 
     useEffect( () => {
 
-        return console.log('mounitng nvabr')
+        console.log('mounitng nvabr')
+        console.log(loggedIn)
 
     },[] )
     
-    const loggedIn = useSelector( state => state.loggedIn.loggedIn);
-    const dispatch = useDispatch();
+    let loggedIn = useSelector( state => state.loggedIn);
+    console.log('wtf',loggedIn)
+    let dispatch = useDispatch();
 
     return (
         <div className="overWrapper">

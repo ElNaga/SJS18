@@ -1,6 +1,7 @@
 import './LoggedIn.css'
 import { useSelector, useDispatch } from 'react-redux'
 import { setLogin } from '../../slices/loggedInSlice'
+import { useNavigate } from 'react-router-dom';
 
 
 export const LoggedInButtons = () => {
@@ -8,7 +9,15 @@ export const LoggedInButtons = () => {
     const loggedIn = useSelector(state => state.loggedIn.loggedIn);
     const dispatch = useDispatch();
 
-    const logMeOut = () => dispatch(setLogin( false ))
+    let navigate = useNavigate();
+
+    const logMeOut = () => {
+        console.log('this is logout')
+        localStorage.removeItem('token');
+        dispatch(setLogin( false ))
+        navigate('/')
+        console.log("this is state of login", loggedIn)
+    }
 
     return (
         <div className="navbar--logButtons">

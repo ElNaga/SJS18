@@ -44,10 +44,11 @@ export const Login = () => {
                 }
             });
             let rez = await response.json();
+            localStorage.setItem("token", rez.token);
             return rez;
 
         } catch (err) {
-            throw err;// throws to log me in func
+            throw err;// throws to logMeIn  func
         }
     };
 
@@ -55,11 +56,12 @@ export const Login = () => {
         try {
             const res = await sendLoginInfo(loginData.email, loginData.password);
             console.log(res)
-            // if (res.ok) {
+            let tokenExist = localStorage.getItem("token");
+            if (tokenExist) {
                 dispatch(setLogin( true ));
-                routeChangeHome();
-                console.log(token)
-            // }
+            }
+            routeChangeHome();
+            console.log(token)
         } catch (err){ 
             console.log(err);
         }
