@@ -8,17 +8,15 @@ import { useEffect, useState } from 'react'
 import { LoggedOutButtons } from '../LoggedOutButtons/LoggedOutButtons'
 import { LoggedInButtons } from '../LoggedInButtons/LoggedInButtons'
 
-export const Navbar = () => {
+export const Navbar = ({login}) => {
 
     useEffect( () => {
 
         console.log('mounitng nvabr')
-        console.log(loggedIn)
 
     },[] )
     
-    let loggedIn = useSelector( state => state.loggedIn);
-    console.log('wtf',loggedIn)
+    console.log('wtf')
     let dispatch = useDispatch();
 
     return (
@@ -39,7 +37,7 @@ export const Navbar = () => {
                     </ul>
                 </div>
                 <div>
-                    {loggedIn ? <LoggedInButtons/> : <LoggedOutButtons/>}
+                    {login ? <LoggedInButtons/> : <LoggedOutButtons/>}
                 </div>
             </div>
         </div>

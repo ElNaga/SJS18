@@ -44,6 +44,7 @@ export const Login = () => {
                 }
             });
             let rez = await response.json();
+            console.log(rez);
             localStorage.setItem("token", rez.token);
             return rez;
 

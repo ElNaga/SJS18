@@ -6,8 +6,8 @@ import { useNavigate } from 'react-router-dom';
 
 export const LoggedInButtons = () => {
 
-    const loggedIn = useSelector(state => state.loggedIn.loggedIn);
-    const dispatch = useDispatch();
+    let loggedIn = useSelector(state => state.loggedIn.loggedIn);
+    let dispatch = useDispatch();
 
     let navigate = useNavigate();
 

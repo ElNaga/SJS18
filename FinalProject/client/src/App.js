@@ -16,19 +16,27 @@ import {setLogin} from './slices/loggedInSlice'
 import { Routes, Route } from 'react-router-dom'
 
 import './App.css'
+import { useEffect } from "react";
 
 function App() {
 
-  let existingToken = localStorage.getItem("token");
-  if (existingToken) {
-    setLogin(true)
-    console.log("Am i here?")
-  }
+  let loggedIn = useSelector(state => state.loggedIn.loggedIn);
+  const dispatch = useDispatch();
+  useEffect( () => {
+
+    let existingToken = localStorage.getItem("token");
+    if (existingToken) {
+      dispatch(setLogin(true))
+      console.log("Am i here?", loggedIn)
+    }
+  },[] )
+  
+
 
   return (
     <div className="App">
       <div className="content_wrap">
-        <Navbar />
+        <Navbar login={loggedIn}/>
 
         <Routes>
           <Route path="/" element={<Home />} />
@@ -38,7 +46,7 @@ function App() {
           <Route path="/myprofile" element={<MyProfile />} />
           <Route path="/myrecipes" element={<MyRecipe />} />
           <Route path="/edit-recipe/new" element={<MyRecipe />} />
-          <Route path="/edit-recipe/:id" element={<MyRecipe />} /> /*
+          <Route path="/edit-recipe/:id" element={<MyRecipe />} /> 
 
           {/* <Route path="/editrecipe/:id" element={<EditRecipe />}>
             <Route index element={<Users users={users} />} />
