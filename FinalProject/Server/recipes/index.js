@@ -9,6 +9,9 @@ db.init(); // initialize connection to DB
 const api = express();
 api.use(express.json()); // use json files in the api??
 
+// 3. api get recipieByDateOfCreation
+api.get ('/api/v1/recipes', recipes.recipesByDate);
+
 api.use(jwt({
     algorithms: ['HS256'],
     secret: config.get('security').jwt_secret
@@ -16,11 +19,11 @@ api.use(jwt({
 //     // path not needed for authetication
     path: [
 // 3. api get recipieByDateOfCreation
-        '/api/v1/recipes',
+        "/api/v1/recipes"
 // 4. api get recipeByFavorites
-        '/api/v1/recipes/popular',
+        // '/api/v1/recipes/popular',
 // 5. api get recipeByCategory
-        '/api/v1/recipes:category'
+        // '/api/v1/recipes/:category'
     ]
 }))
 
@@ -29,12 +32,10 @@ api.post ('/api/v1/recipes', recipes.createRecipe);
 // 2. api Update recipie
 api.put ('/api/v1/recipes', recipes.updateRecipe);
 
-// 3. api get recipieByDateOfCreation
-api.get ('/api/v1/recipes', recipes.recipesByDate);
 // 4. api get recipeByFavorites
 api.get ('/api/v1/recipes/popular', recipes.recipesByFave);
 // 5. api get recipeByCategory
-api.get ('/api/v1/recipes:category', recipes.recipesByCategory);
+api.get ('/api/v1/recipes/:category', recipes.recipesByCategory);
 // 6. api get recipeByCategory
 api.get ('/api/v1/recipes:author', recipes.recipesByAuthor);
 // 7. api get 1 recipe

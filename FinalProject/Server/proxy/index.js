@@ -26,7 +26,7 @@ app.use(
 );
 
 app.use(
-'/api/v1/posts',
+'/api/v1/recipes',
     proxy(
         'http://127.0.0.1:10003',
         {
