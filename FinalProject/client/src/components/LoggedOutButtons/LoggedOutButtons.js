@@ -6,13 +6,13 @@ export const LoggedOutButtons = () => {
       <div className="logButtons">
           <ul>
               <li className="logIn">
-                <Link to="/login">LOG IN</Link>
+                <Link style={{ textDecoration: 'none' }} to="/login">LOG IN</Link>
                 </li>
               <li className="orangeOr">
                 or
                 </li>
               <li className="createAccount">
-                <Link to="/create-account">CREATE ACCOUNT</Link>
+                <Link style={{ textDecoration: 'none' }} to="/create-account">CREATE ACCOUNT</Link>
                 </li>
           </ul>
       </div>

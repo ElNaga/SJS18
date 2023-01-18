@@ -36,7 +36,8 @@ export const MyProfile = () => {
                 method: 'put',
                 body: JSON.stringify(saveData),
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    "Authorization": 'Bearer ' + localStorage.getItem("token")
                 }
             }
         );

@@ -4,16 +4,24 @@ import './editRecipe.css'
 import image from '../../assets/pizzaImg.jpg'
 import backImage from '../../assets/icon_back_white.svg'
 
+import { useNavigate } from "react-router-dom";
+
 
 
 export const EditRecipe = () => {
+
+    const navigate = useNavigate();
+    const goBackToList = () => {
+        navigate("/myrecipes")
+    }
+
     return (
         <div className='edit__overWrapper'>
             <div className='edit__wrapper'>
                 <div className='edit__title'>
                     <h2>My Recipes</h2>
                     <span className='edit__theLine'></span>
-                    <div className='edit--backArrow'>
+                    <div onClick={goBackToList} className='edit--backArrow'>
                         <img src={backImage} alt="" />
                     </div>
                 </div>

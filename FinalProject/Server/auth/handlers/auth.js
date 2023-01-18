@@ -52,6 +52,20 @@ const login = async (req, res) => {
     }
 };
 
+const whoAmI = async (req, res) => {
+    try {
+        // 1. проверка дали корисникот со дадениот email постои
+        let u = await user.getUserByEmail(req.body.email);
+        if (!u) {
+            return res.status(400).send('Bad request. Bad credentials');
+        }
+        return res.status(200).send({u});
+    } catch(err) {
+        console.log(err);
+        return res.status(500).send('Internal server error');
+    }
+};
+
 const forgotPassword = (req, res) => {
     return res.send('ok');
 };
@@ -84,5 +98,6 @@ module.exports = {
     forgotPassword,
     resetPassword,
     validate,
-    updateUserInfo
+    updateUserInfo,
+    whoAmI
 };

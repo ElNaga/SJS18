@@ -1,5 +1,5 @@
 import './recipeCard.css'
-
+import { useState,useEffect } from 'react';
 // import object from "../../mockFolder/mockRecipes.json"
 import timeIco from "../../assets/icon_time.svg"
 import plateIco from "../../assets/icon_plate.svg"
@@ -8,14 +8,20 @@ import arrowsIco from "../../assets/icon_arrows_white.svg"
 // const recipe1 = object[0];
 {/* {JSON.stringify(recipe1)} */ }
 
-export const RecipeCard = ( recipe1 ) => {
+export const RecipeCard = ( {recipe1} ) => {
 
-    console.log(recipe1?.category, "here in recipe card");
+    useEffect(() => {
+      console.log(recipe1)
+      console.log(recipe1?._id, "here in recipe card");
+    
+    }, [])
+    
+
     return (
         <>
             {/* <p>{JSON.stringify(recipe1)}</p> */}
-            <p>{(JSON.stringify(recipe1))}</p>
-            {/* <div className='card--wrapper'>
+            {/* <p>{(JSON.stringify(recipe1))}</p> */}
+            <div className='card--wrapper'>
                 <div className='card--imgAndCategory'>
                     <div className='card--tag'>
                         {recipe1.category.toLocaleLowerCase()}
@@ -41,7 +47,7 @@ export const RecipeCard = ( recipe1 ) => {
                         <img src={arrowsIco} alt="" />
                     </div>
                 </div>
-            </div> */}
+            </div>
         </>
     )
 }

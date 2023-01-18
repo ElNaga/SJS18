@@ -1,5 +1,6 @@
 import { CreateAccount } from "./components/CreateAccount/CreateAccount";
 import { EditRecipe } from "./components/EditRecipe/EditRecipe";
+import { AddRecipe } from "./components/AddRecipe/AddRecipe";
 import { Footer } from "./components/Footer/Footer";
 import { Login } from "./components/Login/Login";
 import { MyProfile } from "./components/MyProfile/MyProfile";
@@ -45,8 +46,8 @@ function App() {
           <Route path="/:category" element={<Category />} />
           <Route path="/myprofile" element={<MyProfile />} />
           <Route path="/myrecipes" element={<MyRecipe />} />
-          <Route path="/edit-recipe/new" element={<MyRecipe />} />
-          <Route path="/edit-recipe/:id" element={<MyRecipe />} /> 
+          <Route path="/add-recipe" element={<AddRecipe />} />
+          <Route path="/edit-recipe/:id" element={<EditRecipe />} /> 
 
           {/* <Route path="/editrecipe/:id" element={<EditRecipe />}>
             <Route index element={<Users users={users} />} />

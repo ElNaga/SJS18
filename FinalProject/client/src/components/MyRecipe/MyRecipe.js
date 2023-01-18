@@ -2,15 +2,22 @@ import './myRecipe.css'
 import plus from '../../assets/icon_plus_white.svg'
 import bucketIco from '../../assets/icon_trashcan.svg'
 import response from "../../mockFolder/mockRecipes.json"
+import { useNavigate } from "react-router-dom";
 
 export const MyRecipe = () => {
+
+    const navigate = useNavigate();
+    const addRecipePage = () => {
+        navigate("/add-recipe")
+    }
+
     return (
         <div className='myRecipe--overWrapper'>
             <div className='myRecipe--wrapper'>
                 <div className='myRecipes--title'>
                     <h2>My Recipes</h2>
                     <span className='myRecipes--theLine'></span>
-                    <div className='myRecipe--backArrow'>
+                    <div onClick={addRecipePage} className='myRecipe--backArrow'>
                         <img src={plus} alt="" />
                     </div>
                 </div>

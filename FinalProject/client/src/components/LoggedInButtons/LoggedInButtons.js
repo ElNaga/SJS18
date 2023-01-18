@@ -1,7 +1,7 @@
 import './LoggedIn.css'
 import { useSelector, useDispatch } from 'react-redux'
 import { setLogin } from '../../slices/loggedInSlice'
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 export const LoggedInButtons = () => {
@@ -22,9 +22,9 @@ export const LoggedInButtons = () => {
     return (
         <div className="navbar--logButtons">
             <ul>
-                <li className="Navbar--MyRecipesButton LoggedInButton">MY RECIPES</li>
+                <li ><Link to="/myrecipes" style={{ textDecoration: 'none' }} className="Navbar--MyRecipesButton LoggedInButton">MY RECIPES</Link></li>
                 <li className="Black--Dot"></li>
-                <li className="Navbar--MyProfileButton LoggedInButton">MY PROFILE</li>
+                <li><Link to="/myprofile" style={{ textDecoration: 'none' }} className="Navbar--MyProfileButton LoggedInButton">MY PROFILE</Link></li>
                 <li className="Black--Dot"></li>
                 <li className="Navbar--LogOutButton LoggedInButton"
                     onClick={logMeOut}

@@ -22,6 +22,8 @@ api.use(jwt({
     ]
 }));
 
+api.get('/api/v1/auth/whoami', auth.whoAmI); //This returns user data from DATABASE IF LOGGED IN
+
 api.post('/api/v1/auth/create-account', auth.create);
 api.post('/api/v1/auth/login', auth.login);
 
