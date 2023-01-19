@@ -66,7 +66,7 @@ export const AddRecipe = () => {
 
 
 
-    const writeToDB = (data) => {
+    const writeToDB = async (data) => {
         console.log(data);
     }
 
@@ -78,51 +78,128 @@ export const AddRecipe = () => {
     //   HERE IS THE PICTURE HANDLER //
     //------------------------------//
 
-        const [picture, setPicture] = useState(null);
-        const [error, setError] = useState('');
+        // const [picture, setPicture] = useState(null);
+        // const [error, setError] = useState('');
 
-        const handleFileSelect = (event) => {
-            setPicture(event.target.files[0]);
-        };
+        // const handleFileSelect = async (event) => {
+        //     console.log(event.target.files[0]);
+        //     setPicture(event.target.files[0]);
+        //     let r = await handleUpload();
+        //     console.log('am i here?', picture)
+        // };
 
-        const fileInput = useRef(null);
+        // const fileInput = useRef(null);
 
-        const handleButtonClick = () => {
-            fileInput.current.click();
-        };
+        // const handleButtonClick = () => {
+        //     fileInput.current.click();
+        // };
 
-        const handleUpload = async () => {
-            // do something with the picture, like sending it to a server
-            if(!picture){
-                setError("No file selected");
-                return;
-            }
+        // useEffect( () => {
+        //     ( async () => {
+        //         try {
+        //             console.log('useEffect ran. state picture is: ', picture);
+        //             let r = await handleUpload();
+        //             console.log('am i here?', picture)
+        //         } catch (err) {
+        //             console.log(err)
+        //         }
+
+        //   })();}, [picture]); 
+
+        // const handleUpload = async () => {
+        //     // do something with the picture, like sending it to a server
+        //     if(!picture){
+        //         setError("No file selected");
+        //         console.log('no picture')
+        //         return;
+        //     }
+        //     try {
+        //         const formData = new FormData();
+        //         console.log('this is picture',picture)
+        //         formData.append('slika', picture);
+        //         const response = await fetch('/api/v1/storage', {
+        //             method: 'POST',
+        //             body: formData,
+        //             headers: {
+        //                 'Content-Type': 'multipart/form-data',
+        //                 "Authorization": 'Bearer ' + localStorage.getItem("token")
+        //             }
+        //         });
+        //         if(!response.ok){
+        //             throw new Error(response.message);
+        //         }
+        //         const data = await response.json();
+        //         if(data.success){
+        //             console.log("Upload successfull");
+        //             setRecipeData({
+        //                 ...recipeData,
+        //                 imgLink: data.fileLocation
+        //             })
+        //         }else{
+        //             setError("Upload failed");
+        //             console.log(error);
+        //         }
+        //     } catch (err) {
+        //         setError(`Upload failed: ${err.message}`)
+        //     }
+
+        //     //add Link to recipeData 
+        // };
+
+    const [selectedFile, setSelectedFile] = useState(null);
+
+
+    const changeHandler = (event) => {
+        setSelectedFile(event.target.files[0]);
+    };
+
+    let [initial, setInitial] = useState(true)
+
+    useEffect( () => {
+        (async () => {
             try {
-                const formData = new FormData();
-                formData.append('slika', picture);
-                const response = await fetch('/api/v1/storage', {
-                    method: 'POST',
-                    body: formData
-                });
-                if(!response.ok){
-                    throw new Error(response.message);
-                }
-                const data = await response.json();
-                if(data.success){
-                    console.log("Upload successfull");
-                    setRecipeData({
-                        ...recipeData,
-                        imgLink: data.fileLocation
-                    })
-                }else{
-                    setError("Upload failed");
+                if (initial){
+                    setInitial(false)
+                    console.log('ne mrdam')
+                } else {
+                    console.log('this is render')
+                    handleSubmission();
                 }
             } catch (err) {
-                setError(`Upload failed: ${err.message}`)
+                console.log(err)
             }
+        }
+        )();}, [selectedFile]);
 
-            //add Link to recipeData 
-        };
+
+    const handleSubmission = async () => {
+
+        try {
+            const slika = new FormData();
+
+            slika.append('slika', selectedFile, selectedFile.name);
+
+            const response = await fetch(
+                'http://localhost:10000/api/v1/storage',
+                {
+                    method: 'POST',
+                    body: slika,
+                    headers: {
+                        "Authorization": 'Bearer ' + localStorage.getItem("token")
+                    }
+                }
+            );
+            let pictureName = await response.json();
+            console.log('this is picture name', pictureName.fileLocation);
+            setRecipeData({
+                ...recipeData,
+                imgLink: pictureName.fileLocation
+            })
+            return pictureName
+        } catch (error) {
+           throw error;
+        }
+    };
 
 
     return (
@@ -138,9 +215,11 @@ export const AddRecipe = () => {
                 <div className='add--content'>
                     <div className='add--recipeImg'>
                         <label htmlFor="recipeImg">Recipe Image</label>
-                        <img src={recipeData.imgLink} alt="recipeImg" />
-                        <button onClick={handleButtonClick} className='add--recipeImgButton'>UPLOAD IMAGE</button>
-                        <input type="file" ref={fileInput} style={{display: 'none'}} onChange={handleFileSelect} />
+                        <img src={'/Users/aleksandarilijevski/SemosJavaScript/Semos/FinalProject/Server/storage/handlers/../uploads/bgwJOFr2XL__defaultAvatar.png'} alt="recipeImg" />
+
+                        <label htmlFor="upload-photo" className='add--recipeImgButton'>UPLOAD IMAGE</label>
+                        <input id='upload-photo' type="file"  onChange={changeHandler}/>
+
                     </div>
                     <div className='add--recipeInfo'>
                         <label htmlFor="recipeName">Recipe Title</label>

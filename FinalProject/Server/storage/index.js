@@ -1,4 +1,5 @@
 const config = require('../../pkg/config')
+const bodyParser = require('body-parser');
 const express = require('express');
 const fileUpload = require('express-fileupload');
 const { expressjwt: jwt } = require('express-jwt');
@@ -10,7 +11,10 @@ api.use(jwt({
     algorithms: ["HS256"],
     secret: config.get('security').jwt_secret
 }));
-api.use(fileUpload());
+
+api.use(fileUpload({
+    limits: { fileSize: 50 * 1024 * 1024 },
+}));
 
 api.post('/api/v1/storage', storage.upload);
 

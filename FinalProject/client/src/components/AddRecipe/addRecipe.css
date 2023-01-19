@@ -137,10 +137,17 @@ textarea {
     border: solid 1px;
     border-radius: 6px;
     color: #a5a5a5;
-    padding: 7px 29px;
+    padding: 7px 0px;
     font-size: 14px;
     white-space: nowrap;
     cursor: pointer;
+    text-align: center;
+}
+
+#upload-photo {
+    opacity: 0;
+   position: absolute;
+   z-index: -1;
 }
 
 .add--recipeInfo {

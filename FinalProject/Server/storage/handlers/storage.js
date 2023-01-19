@@ -2,6 +2,7 @@ const strings = require('../../../pkg/strings');
 const config = require('../../../pkg/config');
 
 const upload = async (req, res) => {
+        console.log(req.files);
     // let numOfFiles = Object.keys(req.files).length;
     
     // for (const property in req.files) {
@@ -16,7 +17,8 @@ const upload = async (req, res) => {
         await req.files.slika.mv(`${__dirname}/../../../uploads/${newName}`);
         console.log(newName);
         const info = `${__dirname}/../uploads/${newName}`;
-        res.status(201).send({success: true, fileLocation: info});
+        // console.log(URL.createObjectURL(req.files.slika))
+        res.status(201).send({ fileLocation: info});
     //   }
 };
 
