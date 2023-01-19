@@ -6,17 +6,17 @@ const upload = async (req, res) => {
     
     // for (const property in req.files) {
         if(req.files.slika.size >= config.get("upload").sizeLimit){
-            return res.status(413).send('Error 413! Payload too large!');
+            return res.status(413).send({success: false, message: 'Error 413! Payload too large!'});
         }
         if(!config.get("upload").imageTypes.includes(req.files.slika.mimetype) ){
-            return res.status(415).send('Error 415! Unsupported Media Type!');
+            return res.status(415).send({success: false, message: 'Error 415! Unsupported Media Type!'});
         }
 
         let newName = strings.random(10) + "__" + req.files.slika.name;
         await req.files.slika.mv(`${__dirname}/../../../uploads/${newName}`);
         console.log(newName);
         const info = `${__dirname}/../uploads/${newName}`;
-        res.status(201).send({fileLocation: info});
+        res.status(201).send({success: true, fileLocation: info});
     //   }
 };
 

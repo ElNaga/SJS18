@@ -9,7 +9,7 @@ export const Login = () => {
     const loggedIn = useSelector( state => state.loggedIn.loggedIn);
     const dispatch = useDispatch();
 
-    const [token, setToken] = useState('aleksandar');
+    const [token, setToken] = useState('testing state Token text');
 
     let navigate = useNavigate();
     const routeChangeHome = () =>{ 
@@ -62,7 +62,7 @@ export const Login = () => {
                 dispatch(setLogin( true ));
             }
             routeChangeHome();
-            console.log(token)
+            console.log(token);
         } catch (err){ 
             console.log(err);
         }

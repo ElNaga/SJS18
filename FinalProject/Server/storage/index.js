@@ -13,7 +13,8 @@ api.use(jwt({
 api.use(fileUpload());
 
 api.post('/api/v1/storage', storage.upload);
-// api.get('/api/v1/storage/:file', storage.download);
+
+api.get('/api/v1/storage/:file', storage.download);
 
 api.listen(config.get("services").storage.port, err => {
     if(err) {
