@@ -62,7 +62,7 @@ const resetPassword = (req, res) => {
 
 const validate = (req, res) => {
     // console.log(req.auth);
-    return res.status(200).send(req.auth); // return the token payload
+    return res.status(200).send(req.auth); // returns the token payload
 };
 
 const updateUserInfo = async (req, res) => {

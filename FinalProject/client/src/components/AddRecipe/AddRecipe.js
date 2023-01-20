@@ -215,7 +215,7 @@ export const AddRecipe = () => {
                 <div className='add--content'>
                     <div className='add--recipeImg'>
                         <label htmlFor="recipeImg">Recipe Image</label>
-                        <img src={''} alt="recipeImg" />
+                        <img src={recipeData.imgLink} alt="recipeImg" />
 
                         <label htmlFor="upload-photo" className='add--recipeImgButton'>UPLOAD IMAGE</label>
                         <input id='upload-photo' type="file"  onChange={changeHandler}/>
