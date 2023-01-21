@@ -7,6 +7,7 @@ const storage = require('./handlers/storage');
 
 const api = express();
 
+
 api.use(jwt({
     algorithms: ["HS256"],
     secret: config.get('security').jwt_secret
