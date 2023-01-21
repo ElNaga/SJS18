@@ -20,7 +20,7 @@ const upload = async (req, res) => {
         // const info = `http://localhost:1000${__dirname}/../uploads/${newName}`;
         const info = `http://localhost:10000/uploads/`+newName;
         // console.log(URL.createObjectURL(req.files.slika))
-        console.log(res);
+        // console.log(res); 
         res.status(201).send({ fileLocation: info});
     //   }
 };

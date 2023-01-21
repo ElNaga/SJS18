@@ -20,7 +20,7 @@ export const AddRecipe = () => {
     let initData = {
         author_id: '', // from token
         title: '', // from input
-        category: '', // from input
+        category: null, // from input
         preparationTime: '', // from input
         numPeople: 0, // from input
         shortDesc: '', // from input
@@ -64,87 +64,9 @@ export const AddRecipe = () => {
         })();
     },[] )
 
-
-
-    const writeToDB = async (data) => {
-        console.log(data);
-    }
-
-    const handleDataToDb = () => {
-        writeToDB(recipeData);
-    }
-
     //------------------------------//
     //   HERE IS THE PICTURE HANDLER //
     //------------------------------//
-
-        // const [picture, setPicture] = useState(null);
-        // const [error, setError] = useState('');
-
-        // const handleFileSelect = async (event) => {
-        //     console.log(event.target.files[0]);
-        //     setPicture(event.target.files[0]);
-        //     let r = await handleUpload();
-        //     console.log('am i here?', picture)
-        // };
-
-        // const fileInput = useRef(null);
-
-        // const handleButtonClick = () => {
-        //     fileInput.current.click();
-        // };
-
-        // useEffect( () => {
-        //     ( async () => {
-        //         try {
-        //             console.log('useEffect ran. state picture is: ', picture);
-        //             let r = await handleUpload();
-        //             console.log('am i here?', picture)
-        //         } catch (err) {
-        //             console.log(err)
-        //         }
-
-        //   })();}, [picture]); 
-
-        // const handleUpload = async () => {
-        //     // do something with the picture, like sending it to a server
-        //     if(!picture){
-        //         setError("No file selected");
-        //         console.log('no picture')
-        //         return;
-        //     }
-        //     try {
-        //         const formData = new FormData();
-        //         console.log('this is picture',picture)
-        //         formData.append('slika', picture);
-        //         const response = await fetch('/api/v1/storage', {
-        //             method: 'POST',
-        //             body: formData,
-        //             headers: {
-        //                 'Content-Type': 'multipart/form-data',
-        //                 "Authorization": 'Bearer ' + localStorage.getItem("token")
-        //             }
-        //         });
-        //         if(!response.ok){
-        //             throw new Error(response.message);
-        //         }
-        //         const data = await response.json();
-        //         if(data.success){
-        //             console.log("Upload successfull");
-        //             setRecipeData({
-        //                 ...recipeData,
-        //                 imgLink: data.fileLocation
-        //             })
-        //         }else{
-        //             setError("Upload failed");
-        //             console.log(error);
-        //         }
-        //     } catch (err) {
-        //         setError(`Upload failed: ${err.message}`)
-        //     }
-
-        //     //add Link to recipeData 
-        // };
 
     const [selectedFile, setSelectedFile] = useState(null);
 
@@ -202,6 +124,35 @@ export const AddRecipe = () => {
     };
 
 
+    const routeChangeMyRecipes = () =>{ 
+        let path = `/myrecipes`; 
+        navigate(path);
+      }
+
+    const addRecipeToDB = async () => {
+        console.log(recipeData);
+
+        try {
+            let response = await fetch(`/api/v1/recipes`, 
+            {
+                method: 'post',
+                body: JSON.stringify(recipeData),
+                headers: {
+                    'Content-Type': 'application/json',
+                    "Authorization": 'Bearer ' + localStorage.getItem("token")
+                }
+            }
+        );
+        if (response.ok) {
+            routeChangeMyRecipes()
+        }
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
+    const options = ['Breakfast', 'Brunch', 'Lunch', 'Dinner'];
+
     return (
         <div className='add__overWrapper'>
             <div className='add__wrapper'>
@@ -227,7 +178,14 @@ export const AddRecipe = () => {
                         <div className='add--recipeThreeBrackets'>
                             <div className='add--container'>
                                 <label htmlFor="add--recipeCategory">Category</label>
-                                <select id='add--recipeCategory' type="text" name='category' value={recipeData.category} onChange={dataChange} />
+                                <select id='add--recipeCategory' type="text" name='category' value={recipeData.category} onChange={dataChange} >
+                                    <option>Select category</option>
+                                    {options.map((option, index) => {
+                                        return <option key={index} >
+                                            {option}
+                                        </option>
+                                    })}
+                                    </select>
                             </div>
                             <div className='add--container'>
                                 <label htmlFor="add--prepTime" >Preparation Time</label>
@@ -243,7 +201,7 @@ export const AddRecipe = () => {
                                 placeholder='There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don’t look even slightly believable. If you are going to use a passage'
                                 name='shortDesc' value={recipeData.shortDesc} onChange={dataChange}
                                 />
-                        <button onClick={handleDataToDb} className='add--saveButton'>SAVE</button>
+                        <button onClick={addRecipeToDB} className='add--saveButton'>SAVE</button>
                     </div>
                     <div className='add--recipeFullText'>
                         <label htmlFor="add--recipeFullText">Recipe</label>
