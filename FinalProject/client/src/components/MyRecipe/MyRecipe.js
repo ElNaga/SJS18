@@ -3,8 +3,65 @@ import plus from '../../assets/icon_plus_white.svg'
 import bucketIco from '../../assets/icon_trashcan.svg'
 import response from "../../mockFolder/mockRecipes.json"
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from 'react';
 
 export const MyRecipe = () => {
+
+
+    const [myRecipes, setMyRecipes] = useState([]);
+    const [authorId, setAuthorId] = useState(undefined);
+
+    useEffect( () => {
+        (async () => {
+            try {    
+                if (!authorId) {        
+                const response = await fetch ('/api/v1/auth/validate-token',
+                {
+                    method: 'post',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        "Authorization": 'Bearer ' + localStorage.getItem("token")
+                    }
+                });
+                let user = await response.json();
+                console.log('this is user', user);
+                // setUid(user.uid)
+                let bla = user.uid
+                console.log('blllaaa siiiis',bla);
+                setAuthorId(bla)
+                console.log('author ID iiissssss',authorId)
+                return user;
+            }
+            } catch (err) {
+                 console.log(err);
+            }
+        })();
+    },[] );
+
+    useEffect( () => {
+        (async () => {
+            try {
+                if (!authorId) {
+                    console.log(authorId,'this is id');
+                    return
+                } else {
+                    const response = await fetch(`/api/v1/recipes/author/${authorId}`,
+                    {
+                        method: 'get',
+                        headers: {
+                            "Authorization": 'Bearer ' + localStorage.getItem("token")
+                        }
+                    });
+                let rez = await response.json();
+                setMyRecipes(rez);
+                console.log(rez, "myrecipes хомеј");
+                return rez
+                }
+            } catch (err) {
+                return console.log(err);
+            }
+        })();
+    },[authorId]);
 
     const navigate = useNavigate();
     const addRecipePage = () => {
@@ -37,7 +94,7 @@ export const MyRecipe = () => {
                         <label className='myRecipes--label3' htmlFor="">Delete</label>
                     </div>
                 </div>
-                {response.map((element, index) => (
+                {myRecipes.map((element, index) => (
                     <div key={index} className='myRecipes--recipeList myRecipe--Labels'>
 
                         {/* // <option key={index} value={element.value} >

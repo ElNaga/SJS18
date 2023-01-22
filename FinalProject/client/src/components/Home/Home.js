@@ -6,7 +6,8 @@ export const Home = () => {
 
     // console.log((localStorage.getItem('token')))
 
-    let [recipes, setRecipes] = useState([]);
+    let [freshRecipes, setFreshRecipes] = useState([]);
+    let [popularRecipes, setPopularRecipes] = useState([]);
 
 
     useEffect( () => {
@@ -18,8 +19,23 @@ export const Home = () => {
                     });
                 let rez = await response.json();
                 console.log(rez, "ќфром хомеј");
-                setRecipes(rez);
+                setFreshRecipes(rez.slice(0,3));
                 console.log(rez, "ќфром хомеј");
+                return rez
+    
+            } catch (err) {
+                console.log(err);
+            }
+        })();
+        (async () => {
+            try {
+                const response = await fetch('/api/v1/recipes/popular',
+                    {
+                        method: 'get',
+                    });
+                let rez = await response.json();
+                setPopularRecipes(rez);
+                console.log(rez, "popular хомеј");
                 return rez
     
             } catch (err) {
@@ -28,7 +44,7 @@ export const Home = () => {
         })();
     },[] )
 
-    let rece = recipes[0];
+    // let freshRecipes = [];
     // JSON.stringify()
     return (
         <div className='home--wrapper'>
@@ -38,7 +54,7 @@ export const Home = () => {
                     <span className='home-theLine'></span>
                 </div>
                 <div className='home--cardsFresh'>
-                    {recipes.map((recipe) =>
+                    {freshRecipes.map((recipe) =>
                         <RecipeCard recipe1={recipe} />
                     )}
                 </div>
@@ -47,8 +63,8 @@ export const Home = () => {
                     <span className='home-theLine'></span>
                 </div>
                 <div className='home--cardsPopular'>
-                    {recipes.map((recipe) =>
-                        <RecipeCard recipe1={recipe} />
+                    {popularRecipes.map((recipe) =>
+                        <RecipeCard style={{border: '30px solid red'}} recipe1={recipe} />
                     )}
                 </div>
 

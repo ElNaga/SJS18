@@ -20,7 +20,7 @@ export const AddRecipe = () => {
     let initData = {
         author_id: '', // from token
         title: '', // from input
-        category: null, // from input
+        category: undefined, // from input
         preparationTime: '', // from input
         numPeople: 0, // from input
         shortDesc: '', // from input

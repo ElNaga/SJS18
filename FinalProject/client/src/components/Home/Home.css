@@ -39,11 +39,13 @@
 .home--cardsFresh {
     display: flex;
     flex-direction: row;
-    gap: 30px;
+    gap: 1.5%;
+    flex-wrap: wrap;
 }
 
 .home--cardsPopular {
     display: flex;
     flex-direction: row;
-    gap: 30px;
+    gap: 1.5%;
+    flex-wrap: wrap;
 }
