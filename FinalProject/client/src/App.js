@@ -43,11 +43,11 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/create-account" element={<CreateAccount />} />
-          <Route path="/:category" element={<Category />} />
           <Route path="/myprofile" element={<MyProfile />} />
           <Route path="/myrecipes" element={<MyRecipe />} />
           <Route path="/add-recipe" element={<AddRecipe />} />
           <Route path="/edit-recipe/:id" element={<EditRecipe />} /> 
+          <Route path="/:category" element={<Category />} />
 
           {/* <Route path="/editrecipe/:id" element={<EditRecipe />}>
             <Route index element={<Users users={users} />} />

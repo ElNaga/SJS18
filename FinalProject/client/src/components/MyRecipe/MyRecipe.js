@@ -10,6 +10,7 @@ export const MyRecipe = () => {
 
     const [myRecipes, setMyRecipes] = useState([]);
     const [authorId, setAuthorId] = useState(undefined);
+    const [stateRestart, setStateRestart] = useState(false)
 
     useEffect( () => {
         (async () => {
@@ -79,7 +80,7 @@ export const MyRecipe = () => {
                     }
                 });
                 let rez = await response.text();
-                setAuthorId({...authorId})
+                setStateRestart(true)
             console.log(rez, "myrecipes хомеј");
             return rez
             

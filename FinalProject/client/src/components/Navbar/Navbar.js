@@ -7,6 +7,7 @@ import logo from '../../assets/logo_color.svg'
 import { useEffect, useState } from 'react'
 import { LoggedOutButtons } from '../LoggedOutButtons/LoggedOutButtons'
 import { LoggedInButtons } from '../LoggedInButtons/LoggedInButtons'
+import { useNavigate } from 'react-router-dom'
 
 export const Navbar = ({login}) => {
 
@@ -19,10 +20,12 @@ export const Navbar = ({login}) => {
     console.log('wtf')
     let dispatch = useDispatch();
 
+    let navigate = useNavigate();
+
     return (
         <div className="overWrapper">
             <div className="wrapper">
-                <div className="logo">
+                <div className="logo" onClick={() => navigate('/')}>
                     <img src={logo} alt="logo" />
                 </div>
                 <div className="foodCategories">
