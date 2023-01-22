@@ -88,7 +88,7 @@ const recipesOne = async (req, res) => {
 const deleteOne = async (req, res) => {
     try {
         await recipes.remove(req.params.id, req.auth.uid);
-        return req.status(204).send('');
+        return res.status(204).send('');
     } catch (err) {
         console.log(err);
         return res.status(500).send('Internal Server Error!');

@@ -1,7 +1,7 @@
 import './myRecipe.css'
 import plus from '../../assets/icon_plus_white.svg'
 import bucketIco from '../../assets/icon_trashcan.svg'
-import response from "../../mockFolder/mockRecipes.json"
+// import response from "../../mockFolder/mockRecipes.json"
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from 'react';
 
@@ -68,6 +68,26 @@ export const MyRecipe = () => {
         navigate("/add-recipe")
     }
 
+    const removeRecipe = async (deleteRecipeId) => {
+        console.log(deleteRecipeId);
+        try {
+                const response = await fetch(`/api/v1/recipes/${deleteRecipeId}`,
+                {
+                    method: 'delete',
+                    headers: {
+                        "Authorization": 'Bearer ' + localStorage.getItem("token")
+                    }
+                });
+                let rez = await response.text();
+                setAuthorId({...authorId})
+            console.log(rez, "myrecipes хомеј");
+            return rez
+            
+        } catch (err) {
+            return console.log(err);
+        }
+    }
+
     return (
         <div className='myRecipe--overWrapper'>
             <div className='myRecipe--wrapper'>
@@ -111,7 +131,7 @@ export const MyRecipe = () => {
                                 <p >{element.dateCreated}</p>
                             </div>
                         </div>
-                        <div className='trashcanImage'>
+                        <div className='trashcanImage' onClick={() => removeRecipe(element._id)}>
                             <img src={bucketIco} alt="" />
                         </div>
                     </div>))}

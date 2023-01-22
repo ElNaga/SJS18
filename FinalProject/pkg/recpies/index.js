@@ -56,7 +56,7 @@ const update = async (id, uid, data) => {
 };
 
 const remove = async (id, uid) => {
-    return Recipe.remove({_id: id, author_id: uid});
+    return Recipe.deleteOne({_id: id, author_id: uid});
 };
 
 
