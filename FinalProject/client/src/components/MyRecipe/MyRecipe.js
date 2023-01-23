@@ -89,6 +89,10 @@ export const MyRecipe = () => {
         }
     }
 
+    const navigateToEditRecipe = (param) => {
+        navigate(`/edit-recipe/${param}`);
+    }
+
     return (
         <div className='myRecipe--overWrapper'>
             <div className='myRecipe--wrapper'>
@@ -122,7 +126,7 @@ export const MyRecipe = () => {
                         //     {element}
                         // </option>))} */}
                         <div className='myRecipes--recipeListWrapper myRecipe--leftLabelsWrapper '>
-                            <div className='myRecipes--CardRecipeName'>
+                            <div className='myRecipes--CardRecipeName' onClick={() => navigateToEditRecipe(element._id)}>
                                 <p >{element.title}</p>
                             </div>
                             <div className='myRecipes--CardCategory'>

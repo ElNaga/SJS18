@@ -24,9 +24,10 @@ const createRecipe = async (req, res) => {
 }
 
 const updateRecipe = async (req, res) => {
+    console.log('this is update')
     try {
         await recipes.update(req.params.id,req.auth.uid,req.body);
-        return req.status(204).send('');
+        return res.status(204).send('');
     } catch (err) {
         if (err) {
             console.log(err);
@@ -58,6 +59,7 @@ const recipesByFave = async (req, res) => {
 const recipesByCategory = async (req, res) => {
     try {
         let data =  await recipes.getByCategory(req.params.category);
+        console.log('this is category');
         res.status(200).send(data);
     } catch (err) {
         console.log(err);

@@ -15,9 +15,9 @@ api.get ('/api/v1/recipes', recipes.recipesByDate);
 // 4. api get recipeByFavorites
 api.get ('/api/v1/recipes/popular', recipes.recipesByFave);
 // 5. api get recipeByCategory
-api.get ('/api/v1/recipes/:category', recipes.recipesByCategory);
+api.get ('/api/v1/recipes/by-category/:category', recipes.recipesByCategory);
 // 7. api get 1 recipe
-api.get ('/api/v1/recipes:id', recipes.recipesOne);
+api.get ('/api/v1/recipes/:id', recipes.recipesOne);
 
 api.use(jwt({
     algorithms: ['HS256'],
@@ -37,7 +37,7 @@ api.use(jwt({
 // 1. api Create recipe
 api.post ('/api/v1/recipes', recipes.createRecipe);
 // 2. api Update recipie
-api.put ('/api/v1/recipes', recipes.updateRecipe);
+api.put ('/api/v1/recipes/id/:id', recipes.updateRecipe);
 
 
 // 6. api get recipeByCategory

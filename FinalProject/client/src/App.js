@@ -46,7 +46,7 @@ function App() {
           <Route path="/myprofile" element={<MyProfile />} />
           <Route path="/myrecipes" element={<MyRecipe />} />
           <Route path="/add-recipe" element={<AddRecipe />} />
-          <Route path="/edit-recipe/:id" element={<EditRecipe />} /> 
+          <Route path="/edit-recipe/:recipeId" element={<EditRecipe />} /> 
           <Route path="/:category" element={<Category />} />
 
           {/* <Route path="/editrecipe/:id" element={<EditRecipe />}>

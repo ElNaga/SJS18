@@ -62,7 +62,7 @@ export const AddRecipe = () => {
                  console.log(err);
             }
         })();
-    },[] )
+    },[] );
 
     //------------------------------//
     //   HERE IS THE PICTURE HANDLER //
@@ -149,7 +149,7 @@ export const AddRecipe = () => {
         } catch (err) {
             console.log(err);
         }
-    }
+    };
 
     const options = ['Breakfast', 'Brunch', 'Lunch', 'Dinner'];
 
