@@ -30,13 +30,13 @@ export const Navbar = ({login}) => {
                 </div>
                 <div className="foodCategories">
                     <ul>
-                        <li className="foodCategory">BREAKFAST</li>
+                        <li className="foodCategory" onClick={() => navigate('/breakfast')} >BREAKFAST</li>
                         <li className="aDot"></li>
-                        <li className="foodCategory">BRUNCH</li>
+                        <li className="foodCategory" onClick={() => navigate('/brunch')} >BRUNCH</li>
                         <li className="aDot"></li>
-                        <li className="foodCategory">LUNCH</li>
+                        <li className="foodCategory" onClick={() => navigate('/lunch')}>LUNCH</li>
                         <li className="aDot"></li>
-                        <li className="foodCategory">DINNER</li>
+                        <li className="foodCategory" onClick={() => navigate('/dinner')}>DINNER</li>
                     </ul>
                 </div>
                 <div>
