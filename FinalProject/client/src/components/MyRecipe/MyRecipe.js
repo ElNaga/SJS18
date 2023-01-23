@@ -69,6 +69,13 @@ export const MyRecipe = () => {
         navigate("/add-recipe")
     }
 
+    function ForceUpdate(){
+        const [value, setValue] = useState(0); // integer state
+        return () => setValue(value => value + 1); // update state to force render
+        // A function that increment 👆🏻 the previous state like here 
+        // is better than directly setting `setValue(value + 1)`
+    }
+
     const removeRecipe = async (deleteRecipeId) => {
         console.log(deleteRecipeId);
         try {
@@ -80,7 +87,7 @@ export const MyRecipe = () => {
                     }
                 });
                 let rez = await response.text();
-                setStateRestart(true)
+                window.location.reload(false);
             console.log(rez, "myrecipes хомеј");
             return rez
             

@@ -65,6 +65,12 @@ const validate = (req, res) => {
     return res.status(200).send(req.auth); // returns the token payload
 };
 
+const getUser = async (req, res) => {
+    // console.log(req.auth);
+    let u = await user.getUserByEmail(req.auth.email);
+    return res.status(200).send(u); // returns the token payload
+};
+
 const updateUserInfo = async (req, res) => {
     try {
         user.update(req.auth.email,req.body)
@@ -84,5 +90,6 @@ module.exports = {
     forgotPassword,
     resetPassword,
     validate,
-    updateUserInfo
+    updateUserInfo,
+    getUser
 };

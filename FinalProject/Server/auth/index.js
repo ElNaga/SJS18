@@ -26,6 +26,8 @@ api.use(jwt({
 api.post('/api/v1/auth/create-account', auth.create);
 api.post('/api/v1/auth/login', auth.login);
 
+api.get('/api/v1/auth/user', auth.getUser);
+
 api.post('/api/v1/auth/forgot-password', auth.forgotPassword);
 api.post('/api/v1/auth/reset-password', auth.resetPassword);
 

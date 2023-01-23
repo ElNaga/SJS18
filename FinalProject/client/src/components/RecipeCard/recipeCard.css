@@ -1,5 +1,6 @@
 .card--wrapper{
-    height: 350px;
+    min-height: 350px;
+    max-height: 450px;
     max-width: 32%;
     min-width: 300px;
     display: flex;
@@ -60,6 +61,8 @@
     color: #A5A5A5;
     font-family: "Roboto", sans-serif;
     margin-bottom: 20px;
+    overflow: hidden;
+    word-wrap: break-word;
 }
 
 .card--footer{

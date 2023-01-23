@@ -55,7 +55,7 @@ export const AddRecipe = () => {
                 setRecipeData({
                     ...recipeData,
                     author_id: user.uid
-                })
+                }) 
                 return user;
     
             } catch (err) {

@@ -7,6 +7,7 @@ const User = mongoose.model(
         password: String,
         first_name: String,
         last_name: String,
+        imgLink: String,
         date_birth: Date
     },
     'users'
