@@ -33,10 +33,12 @@ const login = async (req, res) => {
         // 1. проверка дали корисникот со дадениот email постои
         let u = await user.getUserByEmail(req.body.email);
         if (!u) {
+            console.log('this is bad email');
             return res.status(400).send('Bad request. Bad login credentials');
         }
         // 2. проверка дали внесената лозинка на корисникот се совпаѓа со таа од базата
         if(!bcrypt.compareSync(req.body.password, u.password)) {
+            console.log('this is bad pass', req.body.password,u.password);
             return res.status(400).send('Bad request. Bad login credentials');
         }
         // 3. се генерира и испраќа токен

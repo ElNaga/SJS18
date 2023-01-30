@@ -27,7 +27,7 @@ const create = (id, data) => {
 }
 
 const getByDate = async () => {
-    return Recipe.find({}).sort({published_on: -1});
+    return Recipe.find({}).sort({dateCreated: -1});
 }
 
 const getAll = async () => {

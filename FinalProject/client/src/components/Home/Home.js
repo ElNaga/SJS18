@@ -1,8 +1,15 @@
 import './Home.css'
 import { RecipeCard } from "../RecipeCard/RecipeCard";
 import { useState, useEffect } from 'react';
+import { OneRecipeCard } from '../OneRecipeCard/OneRecipeCard';
+
+import { setOpenPortal } from '../../slices/isOpenSlice'
+import { useDispatch, useSelector } from 'react-redux';
 
 export const Home = () => {
+
+    const openPortal = useSelector(state => state.openPortal.openPortal);
+    const dispatch = useDispatch();
 
     // console.log((localStorage.getItem('token')))
 
@@ -10,7 +17,7 @@ export const Home = () => {
     let [popularRecipes, setPopularRecipes] = useState([]);
 
 
-    useEffect( () => {
+    useEffect(() => {
         (async () => {
             try {
                 const response = await fetch('/api/v1/recipes',
@@ -19,10 +26,10 @@ export const Home = () => {
                     });
                 let rez = await response.json();
                 console.log(rez, "ќфром хомеј");
-                setFreshRecipes(rez.slice(0,3));
+                setFreshRecipes(rez.slice(0, 3));
                 console.log(rez, "ќфром хомеј");
                 return rez
-    
+
             } catch (err) {
                 console.log(err);
             }
@@ -37,15 +44,31 @@ export const Home = () => {
                 setPopularRecipes(rez);
                 console.log(rez, "popular хомеј");
                 return rez
-    
+
             } catch (err) {
                 console.log(err);
             }
         })();
-    },[] )
+    }, [])
 
     // let freshRecipes = [];
     // JSON.stringify()
+
+    const [open, setOpen] = useState(false);
+
+    const onClose = () => {
+        setOpen(false)
+    }
+
+    const [toDisplayRecipe, setToDisplayRecipe] = useState([])
+
+    const onArrow = (recipeInfo) => {
+        console.log('on arrow')
+        setToDisplayRecipe(popularRecipes.find(x => x._id === recipeInfo))
+        console.log('this is recipe info---', recipeInfo)
+        setOpen(true)
+    }
+
     return (
         <div className='home--wrapper'>
             <div className='home--centerWrapper'>
@@ -54,8 +77,14 @@ export const Home = () => {
                     <span className='home-theLine'></span>
                 </div>
                 <div className='home--cardsFresh'>
-                    {freshRecipes.map((recipe) =>
-                        <RecipeCard recipe1={recipe} />
+                    {freshRecipes.map((recipe, index) =>
+                        <>
+                            <RecipeCard
+                                key={recipe._id}
+                                id={recipe._id}
+                                recipe1={recipe}
+                                onArrow={onArrow} />
+                        </>
                     )}
                 </div>
                 <div className='home--title'>
@@ -63,13 +92,21 @@ export const Home = () => {
                     <span className='home-theLine'></span>
                 </div>
                 <div className='home--cardsPopular'>
-                    {popularRecipes.map((recipe) =>
-                        <RecipeCard style={{border: '30px solid red'}} recipe1={recipe} />
+                    {popularRecipes.map((recipe, index) =>
+                        <>
+                            <RecipeCard key={recipe._id} id={recipe.id} recipe1={recipe} onArrow={onArrow} />
+                        </>
                     )}
                 </div>
 
+                {open ? <OneRecipeCard
+                    key={`${toDisplayRecipe._id}-${toDisplayRecipe.title}`}
+                    id={`${toDisplayRecipe._id}-${toDisplayRecipe.title}`}
+                    recipe={toDisplayRecipe}
+                    open={openPortal}
+                    onClose={onClose} /> : null}
+
             </div>
-            {/* <p>{JSON.stringify(recipes[0])}</p> */}
         </div>
     )
 }

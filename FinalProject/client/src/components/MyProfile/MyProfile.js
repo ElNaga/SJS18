@@ -12,7 +12,7 @@ export const MyProfile = () => {
         password: '',
         password2: '',
         first_name: '',
-        imgLink: defaultAvatar,
+        imgLink: undefined,
         last_name: '',
         date_birth: ''
     }
@@ -150,7 +150,8 @@ export const MyProfile = () => {
                 </div>
                 <div className='myprofile__avatar'>
                     <div className='myprofile__avatar__img'>
-                    <img src={saveData.imgLink} alt="recipeImg" />
+                        { saveData.imgLink ?  <img src={saveData.imgLink} alt="recipeImg" /> :  <img src={defaultAvatar} alt="recipeImg" />}
+                    {/* <img src={saveData.imgLink} alt="recipeImg" /> */}
 
                     <label htmlFor="upload-photo" className='add--recipeImgButton'>CHANGE AVATAR</label>
                     <input id='upload-photo' type="file"  onChange={changeHandler}/>
@@ -161,8 +162,8 @@ export const MyProfile = () => {
                             <input className='myprofile__input' type="text" name='first_name' value={saveData.first_name} onChange={dataChange}/>
                             <label className='myprofile__label' htmlFor="Email">Email</label>
                             <input className='myprofile__input' type="email" name='email' value={saveData.email} onChange={dataChange}/>
-                            <label className='myprofile__label' htmlFor="password">Password</label>
-                            <input className='myprofile__input' type="password" name='password' value={saveData.password} onChange={dataChange}/>
+                            {/* <label className='myprofile__label' htmlFor="password">Password</label>
+                            <input className='myprofile__input' type="password" name='password' value={saveData.password} /*onChange={dataChange}/> */}
                             <button className='myprofile__button'
                                 onClick={saveInfo}
                             >SAVE</button>
@@ -172,8 +173,8 @@ export const MyProfile = () => {
                             <input className='myprofile__input' type="text" name='last_name' value={saveData.last_name} onChange={dataChange}/>
                             <label className='myprofile__label' htmlFor="date">Date of birth</label>
                             <input className='myprofile__input' type="date" name='date_birth' value={saveData.date_birth} onChange={dataChange}/>
-                            <label className='myprofile__label' htmlFor="password2">Retype password</label>
-                            <input className='myprofile__input' type="password" name='password2' /*value={saveData.password2}*/ onChange={dataChange}/>
+                            {/* <label className='myprofile__label' htmlFor="password2">Retype password</label>
+                            <input className='myprofile__input' type="password" name='password2' /*value={saveData.password2} onChange={dataChange}/> */}
                         </div>
                     </div>
                 </div>

@@ -18,6 +18,7 @@ import { Routes, Route } from 'react-router-dom'
 
 import './App.css'
 import { useEffect } from "react";
+import { OneRecipeCard } from "./components/OneRecipeCard/OneRecipeCard";
 
 function App() {
 
@@ -46,6 +47,7 @@ function App() {
           <Route path="/myprofile" element={<MyProfile />} />
           <Route path="/myrecipes" element={<MyRecipe />} />
           <Route path="/add-recipe" element={<AddRecipe />} />
+          <Route path="/recipe/:id" element={<OneRecipeCard />} />
           <Route path="/edit-recipe/:recipeId" element={<EditRecipe />} /> 
           <Route path="/:category" element={<Category />} />
 

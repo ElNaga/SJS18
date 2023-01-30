@@ -5,23 +5,44 @@ import timeIco from "../../assets/icon_time.svg"
 import plateIco from "../../assets/icon_plate.svg"
 import favIco from "../../assets/icon_star.svg"
 import arrowsIco from "../../assets/icon_arrows_white.svg"
+import { useNavigate } from 'react-router-dom';
+
+import {setOpenPortal} from '../../slices/isOpenSlice'
+import { useDispatch, useSelector } from 'react-redux';
 // const recipe1 = object[0];
 {/* {JSON.stringify(recipe1)} */ }
 
-export const RecipeCard = ( {recipe1} ) => {
+
+
+
+export const RecipeCard = ( {id, recipe1, onArrow} ) => {
+
+    const openPortal = useSelector( state => state.openPortal.openPortal);
+    const dispatch = useDispatch();
 
     useEffect(() => {
       console.log(recipe1)
       console.log(recipe1?._id, "here in recipe card");
     
     }, [])
+
+    const navigate = useNavigate();
+    const navigateToRecipe = (param) => {
+        navigate(`/recipe/${param}`);
+    }
+    
+    const handleArrow = () => {
+        console.log('this is arrow')
+        onArrow(recipe1._id)
+        // let bla = [recipe1];
+        // localStorage.setItem('toDisplayRecipe',id);
+        // console.log('toDisplayRecipe',JSON.stringify({recipe1}));
+        dispatch(setOpenPortal(true));
+    }
     
 
     return (
-        <>
-            {/* <p>{JSON.stringify(recipe1)}</p> */}
-            {/* <p>{(JSON.stringify(recipe1))}</p> */}
-            <div className='card--wrapper'>
+            <div key={id} id={id} className='card--wrapper'>
                 <div className='card--imgAndCategory'>
                     <div className='card--tag'>
                         {recipe1.category.toLocaleLowerCase()}
@@ -43,11 +64,10 @@ export const RecipeCard = ( {recipe1} ) => {
                         <img className='card--icon' src={favIco} alt="" />
                         <p className='card--info'>{recipe1.numberFavorited}</p>
                     </div>
-                    <div className='card--footerButton'>
-                        <img src={arrowsIco} alt="" />
+                    <div className='card--footerButton' onClick={ handleArrow}>
+                        <img src={arrowsIco} alt="" onClick={ handleArrow} />
                     </div>
                 </div>
             </div>
-        </>
     )
 }
