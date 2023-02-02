@@ -99,12 +99,12 @@ export const Home = () => {
                     )}
                 </div>
 
-                {open ? <OneRecipeCard
+                {/* {open ? <OneRecipeCard
                     key={`${toDisplayRecipe._id}-${toDisplayRecipe.title}`}
                     id={`${toDisplayRecipe._id}-${toDisplayRecipe.title}`}
                     recipe={toDisplayRecipe}
                     open={openPortal}
-                    onClose={onClose} /> : null}
+                    onClose={onClose} /> : null} */}
 
             </div>
         </div>

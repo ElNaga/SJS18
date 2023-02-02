@@ -21,8 +21,8 @@ export const RecipeCard = ( {id, recipe1, onArrow} ) => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-      console.log(recipe1)
-      console.log(recipe1?._id, "here in recipe card");
+    //   console.log(recipe1)
+    //   console.log(recipe1?._id, "here in recipe card");
     
     }, [])
 

@@ -38,7 +38,7 @@ function App() {
   return (
     <div className="App">
       <div className="content_wrap">
-        <Navbar login={loggedIn}/>
+        <Navbar login={loggedIn} />
 
         <Routes>
           <Route path="/" element={<Home />} />
@@ -47,8 +47,13 @@ function App() {
           <Route path="/myprofile" element={<MyProfile />} />
           <Route path="/myrecipes" element={<MyRecipe />} />
           <Route path="/add-recipe" element={<AddRecipe />} />
-          <Route path="/recipe/:id" element={<OneRecipeCard />} />
-          <Route path="/edit-recipe/:recipeId" element={<EditRecipe />} /> 
+          <Route path="/recipe/:id" element={
+            <>
+              <Home />
+              <OneRecipeCard />
+            </>
+          } />
+          <Route path="/edit-recipe/:recipeId" element={<EditRecipe />} />
           <Route path="/:category" element={<Category />} />
 
           {/* <Route path="/editrecipe/:id" element={<EditRecipe />}>
