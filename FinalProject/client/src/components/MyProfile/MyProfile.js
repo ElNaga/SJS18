@@ -8,9 +8,9 @@ import {useSelector, useDispatch} from 'react-redux'
 export const MyProfile = () => {
 
     const initData = {
-        email: '',
-        password: '',
-        password2: '',
+        // email: '',
+        // password: '',
+        // password2: '',
         first_name: '',
         imgLink: undefined,
         last_name: '',

@@ -70,7 +70,7 @@ export const Home = () => {
 
     const onArrow = (recipeInfo) => {
         console.log('on arrow')
-        setToDisplayRecipe(popularRecipes.find(x => x._id === recipeInfo))
+        // setToDisplayRecipe(popularRecipes.find(x => x._id === recipeInfo))
         console.log('this is recipe info---', recipeInfo)
         dispatch(setOpenPortal(true))
     }
@@ -101,7 +101,8 @@ export const Home = () => {
                                 key={recipe._id}
                                 id={recipe._id}
                                 recipe1={recipe}
-                                onArrow={onArrow} />
+                                onArrow={onArrow}
+                                whereToNav={'home'} />
                         </>
                     )}
                 </div>
@@ -112,7 +113,7 @@ export const Home = () => {
                 <div className='home--cardsPopular'>
                     {popularRecipes.map((recipe, index) =>
                         <>
-                            <RecipeCard  key={recipe._id} id={recipe.id} recipe1={recipe} onArrow={onArrow} />
+                            <RecipeCard whereToNav={'home'} key={recipe._id} id={recipe.id} recipe1={recipe} onArrow={onArrow} />
                         </>
                     )}
                 </div>

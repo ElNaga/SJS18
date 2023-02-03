@@ -6,7 +6,7 @@ import { useParams, Route, Routes, useNavigate } from 'react-router-dom';
 import { RecipeCard } from '../RecipeCard/RecipeCard';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { OneRecipeCard } from '../OneRecipeCard/OneRecipeCard';
+import { OneRecipeCardCategory } from '../OneRecipeCardCategory/OneRecipeCardCategory';
 
 
 export const Category = () => {
@@ -40,30 +40,31 @@ export const Category = () => {
   }, [category])
 
   const onArrow = (recipeInfo) => {
+    console.log('save me!')
     dispatch(setOpenPortal(true))
-}
+  }
 
-const navigate = useNavigate();
-const onClose = () => {
-  console.log('this is ONCLOSEONCLOSEONCLOSEONCLOSE')
-  dispatch(setOpenPortal(false))
-  console.log(openPortal);
-  navigate(`/${category}`);
-}
+  const navigate = useNavigate();
+  const onClose = () => {
+    console.log('this is ONCLOSEONCLOSEONCLOSEONCLOSE')
+    dispatch(setOpenPortal(false))
+    console.log(openPortal);
+    navigate(`/category/${category}`);
+  }
 
   return (
 
-    
+
     <div className='home--wrapper'>
 
-{/* <Routes>
+      <Routes>
 
-<Route path="/:category/:id" element={
-    <>
-      <OneRecipeCard open={openPortal} onClose={onClose}/>
-    </>
-  } />
-</Routes> */}
+        <Route path="/oneRecipe/:id" element={
+          <>
+            <OneRecipeCardCategory open={openPortal} onClose={onClose} />
+          </>
+        } />
+      </Routes>
 
       <div className='home--centerWrapper'>
         <div className='home--title'>
@@ -71,8 +72,8 @@ const onClose = () => {
           <span className='home-theLine'></span>
         </div>
         <div className='home--cardsFresh'>
-          {categoryRecipes.map((recipe,index) =>
-            <RecipeCard key={index} id={recipe.id} recipe1={recipe} onArrow={onArrow}/>
+          {categoryRecipes.map((recipe, index) =>
+            <RecipeCard whereToNav={'category'} key={index} id={recipe.id} recipe1={recipe} onArrow={onArrow} />
           )}
         </div>
       </div>

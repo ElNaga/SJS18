@@ -15,7 +15,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 
 
-export const RecipeCard = ( {id, recipe1, onArrow} ) => {
+export const RecipeCard = ( {id, recipe1, onArrow, whereToNav} ) => {
 
     const openPortal = useSelector( state => state.openPortal.openPortal);
     const dispatch = useDispatch();
@@ -28,7 +28,12 @@ export const RecipeCard = ( {id, recipe1, onArrow} ) => {
 
     const navigate = useNavigate();
     const navigateToRecipe = (param) => {
-        navigate(`/recipe/${param}`);
+        if (whereToNav === 'home') {
+            navigate(`/recipe/${param}`);
+        }
+        else if (whereToNav == 'category') {
+            navigate(`/oneRecipe/${param}`);
+        }
     }
     
     const handleArrow = () => {
