@@ -56,13 +56,13 @@ export const Home = () => {
     // let freshRecipes = [];
     // JSON.stringify()
 
-    const [open, setOpen] = useState(false);
+
     const navigate = useNavigate();
 
     const onClose = () => {
         console.log('this is ONCLOSEONCLOSEONCLOSEONCLOSE')
-        setOpen(false)
-        console.log(open);
+        dispatch(setOpenPortal(false))
+        console.log(openPortal);
         navigate('/');
     }
 
@@ -72,7 +72,7 @@ export const Home = () => {
         console.log('on arrow')
         setToDisplayRecipe(popularRecipes.find(x => x._id === recipeInfo))
         console.log('this is recipe info---', recipeInfo)
-        setOpen(true)
+        dispatch(setOpenPortal(true))
     }
 
     return (
@@ -82,7 +82,7 @@ export const Home = () => {
 
 <Route path="/recipe/:id" element={
     <>
-      <OneRecipeCard open={open} onClose={onClose}/>
+      <OneRecipeCard open={openPortal} onClose={onClose}/>
     </>
   } />
 </Routes>

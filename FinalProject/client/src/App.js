@@ -49,12 +49,12 @@ function App() {
           <Route path="/add-recipe" element={<AddRecipe />} />
           {/* <Route path="/recipe/:id" element={
             <>
-              <Home />
-              <OneRecipeCard />
+            <Home />
+            <OneRecipeCard />
             </>
           } /> */}
           <Route path="/edit-recipe/:recipeId" element={<EditRecipe />} />
-          <Route path="/:category" element={<Category />} />
+          <Route path="/category/:category" element={<Category />} />
 
           {/* <Route path="/editrecipe/:id" element={<EditRecipe />}>
             <Route index element={<Users users={users} />} />

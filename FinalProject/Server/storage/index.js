@@ -7,14 +7,15 @@ const storage = require('./handlers/storage');
 
 const api = express();
 
-
 api.use(jwt({
     algorithms: ["HS256"],
     secret: config.get('security').jwt_secret
 }));
 
+// api.use(bodyParser.urlencoded({ extended: true, limit: "10000kb" }));
+
 api.use(fileUpload({
-    limits: { fileSize: 50 * 1024 * 1024 },
+    limits: { fileSize: 50048576 },
 }));
 
 api.post('/api/v1/storage', storage.upload);

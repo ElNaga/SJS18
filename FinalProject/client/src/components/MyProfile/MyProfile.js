@@ -33,6 +33,7 @@ export const MyProfile = () => {
                 });
                 let user = await response.json();
                 console.log('this is user', user);
+                console.log('this is user img', user.imgLink);
                 // setUid(user.uid)
                 let aDateString =user.date_birth
                 console.log('this is type',typeof(aDateString))
@@ -41,6 +42,7 @@ export const MyProfile = () => {
                 setSaveData({
                     ...saveData,
                     first_name: user.first_name,
+                    email: user.email,
                     last_name: user.last_name,
                     date_birth: newDateString,
                     imgLink: user.imgLink
@@ -54,6 +56,7 @@ export const MyProfile = () => {
     }, [] )
 
     const dataChange = (e) => {
+        console.log(saveData)
         setSaveData({
             ...saveData,
             [e.target.name]: e.target.value
@@ -160,8 +163,12 @@ export const MyProfile = () => {
                         <div className='myprofile__inputsLeft'>
                             <label className='myprofile__label' htmlFor="first_name">First name</label>
                             <input className='myprofile__input' type="text" name='first_name' value={saveData.first_name} onChange={dataChange}/>
-                            <label className='myprofile__label' htmlFor="Email">Email</label>
-                            <input className='myprofile__input' type="email" name='email' value={saveData.email} onChange={dataChange}/>
+                            {/* <label className='myprofile__label' htmlFor="Email">Email</label>
+                            <input className='myprofile__input' type="email" name='email' value={saveData.email} onChange={dataChange}/> */}
+                            <label className='myprofile__label' htmlFor="last_name">Last name</label>
+                            <input className='myprofile__input' type="text" name='last_name' value={saveData.last_name} onChange={dataChange}/>
+                            <label className='myprofile__label' htmlFor="date">Date of birth</label>
+                            <input className='myprofile__input' type="date" name='date_birth' value={saveData.date_birth} onChange={dataChange}/>
                             {/* <label className='myprofile__label' htmlFor="password">Password</label>
                             <input className='myprofile__input' type="password" name='password' value={saveData.password} /*onChange={dataChange}/> */}
                             <button className='myprofile__button'
@@ -169,10 +176,7 @@ export const MyProfile = () => {
                             >SAVE</button>
                         </div>
                         <div className='myprofile__inputsRight'>
-                            <label className='myprofile__label' htmlFor="last_name">Last name</label>
-                            <input className='myprofile__input' type="text" name='last_name' value={saveData.last_name} onChange={dataChange}/>
-                            <label className='myprofile__label' htmlFor="date">Date of birth</label>
-                            <input className='myprofile__input' type="date" name='date_birth' value={saveData.date_birth} onChange={dataChange}/>
+
                             {/* <label className='myprofile__label' htmlFor="password2">Retype password</label>
                             <input className='myprofile__input' type="password" name='password2' /*value={saveData.password2} onChange={dataChange}/> */}
                         </div>

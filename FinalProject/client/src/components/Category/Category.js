@@ -1,11 +1,18 @@
 import './category.css'
 
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom';
+import { setOpenPortal } from '../../slices/isOpenSlice'
+import { useParams, Route, Routes, useNavigate } from 'react-router-dom';
 import { RecipeCard } from '../RecipeCard/RecipeCard';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { OneRecipeCard } from '../OneRecipeCard/OneRecipeCard';
 
 
 export const Category = () => {
+
+  const openPortal = useSelector(state => state.openPortal.openPortal);
+  const dispatch = useDispatch();
 
   const { category } = useParams();
 
@@ -32,8 +39,32 @@ export const Category = () => {
     })();
   }, [category])
 
+  const onArrow = (recipeInfo) => {
+    dispatch(setOpenPortal(true))
+}
+
+const navigate = useNavigate();
+const onClose = () => {
+  console.log('this is ONCLOSEONCLOSEONCLOSEONCLOSE')
+  dispatch(setOpenPortal(false))
+  console.log(openPortal);
+  navigate(`/${category}`);
+}
+
   return (
+
+    
     <div className='home--wrapper'>
+
+{/* <Routes>
+
+<Route path="/:category/:id" element={
+    <>
+      <OneRecipeCard open={openPortal} onClose={onClose}/>
+    </>
+  } />
+</Routes> */}
+
       <div className='home--centerWrapper'>
         <div className='home--title'>
           <h2>{category.charAt(0).toUpperCase() + category.slice(1)} </h2>
@@ -41,7 +72,7 @@ export const Category = () => {
         </div>
         <div className='home--cardsFresh'>
           {categoryRecipes.map((recipe,index) =>
-            <RecipeCard key={index} recipe1={recipe} />
+            <RecipeCard key={index} id={recipe.id} recipe1={recipe} onArrow={onArrow}/>
           )}
         </div>
       </div>
