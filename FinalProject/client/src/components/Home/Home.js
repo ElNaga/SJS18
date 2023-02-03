@@ -5,6 +5,7 @@ import { OneRecipeCard } from '../OneRecipeCard/OneRecipeCard';
 
 import { setOpenPortal } from '../../slices/isOpenSlice'
 import { useDispatch, useSelector } from 'react-redux';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 
 export const Home = () => {
 
@@ -15,6 +16,7 @@ export const Home = () => {
 
     let [freshRecipes, setFreshRecipes] = useState([]);
     let [popularRecipes, setPopularRecipes] = useState([]);
+
 
 
     useEffect(() => {
@@ -55,9 +57,13 @@ export const Home = () => {
     // JSON.stringify()
 
     const [open, setOpen] = useState(false);
+    const navigate = useNavigate();
 
     const onClose = () => {
+        console.log('this is ONCLOSEONCLOSEONCLOSEONCLOSE')
         setOpen(false)
+        console.log(open);
+        navigate('/');
     }
 
     const [toDisplayRecipe, setToDisplayRecipe] = useState([])
@@ -71,6 +77,17 @@ export const Home = () => {
 
     return (
         <div className='home--wrapper'>
+
+<Routes>
+
+<Route path="/recipe/:id" element={
+    <>
+      <OneRecipeCard open={open} onClose={onClose}/>
+    </>
+  } />
+</Routes>
+
+
             <div className='home--centerWrapper'>
                 <div className='home--title'>
                     <h2>Fresh & New </h2>
@@ -80,6 +97,7 @@ export const Home = () => {
                     {freshRecipes.map((recipe, index) =>
                         <>
                             <RecipeCard
+                             
                                 key={recipe._id}
                                 id={recipe._id}
                                 recipe1={recipe}
@@ -94,7 +112,7 @@ export const Home = () => {
                 <div className='home--cardsPopular'>
                     {popularRecipes.map((recipe, index) =>
                         <>
-                            <RecipeCard key={recipe._id} id={recipe.id} recipe1={recipe} onArrow={onArrow} />
+                            <RecipeCard  key={recipe._id} id={recipe.id} recipe1={recipe} onArrow={onArrow} />
                         </>
                     )}
                 </div>

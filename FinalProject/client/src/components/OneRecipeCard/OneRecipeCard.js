@@ -63,7 +63,7 @@ export const OneRecipeCard = ({ open, onClose}) => {
 
     
     // useEffect
-    if (recipe) {
+    if (recipe && open) {
     return PortalReactDOM.createPortal(
         <  >
             <div id={params.id} className='oneRecipeCard-overlay' />

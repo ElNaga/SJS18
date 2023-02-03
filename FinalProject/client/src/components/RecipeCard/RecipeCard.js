@@ -32,12 +32,9 @@ export const RecipeCard = ( {id, recipe1, onArrow} ) => {
     }
     
     const handleArrow = () => {
-        console.log('this is arrow')
-        onArrow(recipe1._id)
-        // let bla = [recipe1];
-        // localStorage.setItem('toDisplayRecipe',id);
-        // console.log('toDisplayRecipe',JSON.stringify({recipe1}));
-        dispatch(setOpenPortal(true));
+        console.log('this is arrow');
+        navigateToRecipe(recipe1._id);
+        onArrow();
     }
     
 

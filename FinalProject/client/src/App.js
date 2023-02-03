@@ -41,18 +41,18 @@ function App() {
         <Navbar login={loggedIn} />
 
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/*" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/create-account" element={<CreateAccount />} />
           <Route path="/myprofile" element={<MyProfile />} />
           <Route path="/myrecipes" element={<MyRecipe />} />
           <Route path="/add-recipe" element={<AddRecipe />} />
-          <Route path="/recipe/:id" element={
+          {/* <Route path="/recipe/:id" element={
             <>
               <Home />
               <OneRecipeCard />
             </>
-          } />
+          } /> */}
           <Route path="/edit-recipe/:recipeId" element={<EditRecipe />} />
           <Route path="/:category" element={<Category />} />
 
