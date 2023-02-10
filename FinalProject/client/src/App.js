@@ -10,29 +10,33 @@ import { RecipeCard } from "./components/RecipeCard/RecipeCard";
 import { Home } from "./components/Home/Home";
 import { Category } from "./components/Category/Category";
 
-import {useSelector, useDispatch} from 'react-redux'
-import {setLogin} from './slices/loggedInSlice'
+import { useSelector, useDispatch } from 'react-redux'
+import { setLogin } from './slices/loggedInSlice'
 
 // Router
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useNavigate } from 'react-router-dom'
 
 import './App.css'
 import { useEffect } from "react";
 import { OneRecipeCard } from "./components/OneRecipeCard/OneRecipeCard";
+import PrivateRoute from "./components/PrivateRoutes/PrivateRoute";
 
 function App() {
 
   let loggedIn = useSelector(state => state.loggedIn.loggedIn);
   const dispatch = useDispatch();
-  useEffect( () => {
+
+  const navigate = useNavigate()
+
+  useEffect(() => {
 
     let existingToken = localStorage.getItem("token");
     if (existingToken) {
       dispatch(setLogin(true))
       console.log("Am i here?", loggedIn)
     }
-  },[] )
-  
+  }, [])
+
 
 
   return (
@@ -44,22 +48,30 @@ function App() {
           <Route path="/*" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/create-account" element={<CreateAccount />} />
-          <Route path="/myprofile" element={<MyProfile />} />
-          <Route path="/myrecipes" element={<MyRecipe />} />
-          <Route path="/add-recipe" element={<AddRecipe />} />
-          {/* <Route path="/recipe/:id" element={
-            <>
-            <Home />
-            <OneRecipeCard />
-            </>
-          } /> */}
-          <Route path="/edit-recipe/:recipeId" element={<EditRecipe />} />
+
+          <Route path="/myprofile" element={
+            <PrivateRoute>
+              <MyProfile />
+            </PrivateRoute>
+          } />
+          <Route path="/myrecipes" element={
+            <PrivateRoute>
+              <MyRecipe />
+            </PrivateRoute>
+          } />
+          <Route path="/add-recipe" element={
+            <PrivateRoute>
+              <AddRecipe />
+            </PrivateRoute>
+          } />
+          <Route path="/edit-recipe/:recipeId" element={
+            <PrivateRoute>
+              <EditRecipe />
+            </PrivateRoute>
+          } />
+
           <Route path="/:category" element={<Category />} />
 
-          {/* <Route path="/editrecipe/:id" element={<EditRecipe />}>
-            <Route index element={<Users users={users} />} />
-            <Route path=":id" element={<User />} />
-          </Route> */}
 
         </Routes>
 
