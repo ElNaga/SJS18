@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 
 import {setOpenPortal} from '../../slices/isOpenSlice'
 import { useDispatch, useSelector } from 'react-redux';
+import { OneRecipeCardCategory } from '../OneRecipeCardCategory/OneRecipeCardCategory';
 // const recipe1 = object[0];
 {/* {JSON.stringify(recipe1)} */ }
 
@@ -36,16 +37,30 @@ export const RecipeCard = ( {id, recipe1, onArrow, whereToNav} ) => {
         }
     }
     
+    const [showTheThing, SetShowTheThing] = useState(false)
+
     const handleArrow = () => {
-        console.log('this is arrow');
-        navigateToRecipe(recipe1._id);
-        onArrow();
+
+        if (whereToNav === 'category') {
+            SetShowTheThing(true);
+        } else {
+            console.log('this is arrow');
+            navigateToRecipe(recipe1._id);
+            onArrow();
+        }
+    }
+
+    const onClose = () => {
+        SetShowTheThing(false);
     }
     
 
     return (
             <div key={id} id={id} className='card--wrapper'>
                 <div className='card--imgAndCategory'>
+
+                    {showTheThing ? <OneRecipeCardCategory recipe={recipe1} open={showTheThing} onClose={onClose}/> : null}
+
                     <div className='card--tag'>
                         {recipe1.category.toLocaleLowerCase()}
                     </div>
@@ -67,7 +82,7 @@ export const RecipeCard = ( {id, recipe1, onArrow, whereToNav} ) => {
                         <p className='card--info'>{recipe1.numberFavorited}</p>
                     </div>
                     <div className='card--footerButton' onClick={ handleArrow}>
-                        <img src={arrowsIco} alt="" onClick={ handleArrow} />
+                        <img src={arrowsIco} alt="" onClick={handleArrow} />
                     </div>
                 </div>
             </div>

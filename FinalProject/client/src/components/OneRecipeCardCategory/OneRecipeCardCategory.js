@@ -23,50 +23,50 @@ import { useParams } from 'react-router-dom';
 
 // const recipe = recipeAll[0];
 
-export const OneRecipeCardCategory = ({ open, onClose}) => {
+export const OneRecipeCardCategory = ({ recipe, open, onClose}) => {
 
-    const [recipe,setRecipe] = useState() 
+    // const [recipe,setRecipe] = useState() 
     // const [id, setId] = useState('')
 
-    const params = useParams();
-    console.log(params)
-    // setId(params.id)
-    // console.log('this is id from params',id)
+    // const params = useParams();
+    // console.log(params)
+    // // setId(params.id)
+    // // console.log('this is id from params',id)
 
-    useEffect(() => {
-        (async () => {
-            console.log('Im called from BEFORE THE FETCH')
-            try {
-                console.log('Im called from THE TRY BLOCK WHERE THE FETCH IS NEXT')
-                const response = await fetch(`/api/v1/recipes/${params.id}`,
-                    {
-                        method: 'get',
+    // useEffect(() => {
+    //     (async () => {
+    //         console.log('Im called from BEFORE THE FETCH')
+    //         try {
+    //             console.log('Im called from THE TRY BLOCK WHERE THE FETCH IS NEXT')
+    //             const response = await fetch(`/api/v1/recipes/${params.id}`,
+    //                 {
+    //                     method: 'get',
 
-                    });
-                let rez = await response.json();
-                console.log(rez[0], "from one recipe");
-                setRecipe(rez[0]);
-                console.log(rez, "FROM ONE RECIPE CARD");
-                return rez
-            } catch (err) {
-                console.log('errrororororororooro')
-                console.log(err);
-            }
-        })();
-    }, [])
+    //                 });
+    //             let rez = await response.json();
+    //             console.log(rez[0], "from one recipe");
+    //             setRecipe(rez[0]);
+    //             console.log(rez, "FROM ONE RECIPE CARD");
+    //             return rez
+    //         } catch (err) {
+    //             console.log('errrororororororooro')
+    //             console.log(err);
+    //         }
+    //     })();
+    // }, [])
 
-    // let recipe = localStorage.getItem('toDisplayRecipe');
-    // let recipe = recipe1;
-    console.log('this is the recipe!!',recipe)
-    // console.log('tjhis is iddidididididi',id)
-    // console.log(JSON.stringify(recipe))
+    // // let recipe = localStorage.getItem('toDisplayRecipe');
+    // // let recipe = recipe1;
+    // console.log('this is the recipe!!',recipe)
+    // // console.log('tjhis is iddidididididi',id)
+    // // console.log(JSON.stringify(recipe))
 
     
     // useEffect
     if (recipe && open) {
     return PortalReactDOM.createPortal(
         <  >
-            <div id={params.id} className='oneRecipeCard-overlay' />
+            <div id={recipe._id} className='oneRecipeCard-overlay' />
             <div className='oneRecipeCard--overwrapper'>
                 <div className='oneRecipeCard--wrapper'>
                     {/* <div className='oneRecipeCard-xbutton'>
