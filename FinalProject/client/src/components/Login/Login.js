@@ -90,7 +90,7 @@ export const Login = () => {
                             Bad Login Information!
                             <br />
                             <br />
-                            Try again.
+                            Try again. 
                             <br />
                             <br />
                         </div> : null}
