@@ -6,6 +6,7 @@ import backImage from '../../assets/icon_back_white.svg'
 
 import { useNavigate } from "react-router-dom";
 import {useSelector} from 'react-redux'
+import { Saved } from '../Saved/Saved';
 
 
 export const AddRecipe = () => {
@@ -125,37 +126,54 @@ export const AddRecipe = () => {
 
 
     const routeChangeMyRecipes = () =>{ 
-        let path = `/myrecipes`; 
-        navigate(path);
+        setIsAlertVisible(true)
+        setTimeout(() => {
+            setIsAlertVisible(false);
+            console.log('when will this appear')
+            let path = `/myrecipes`; 
+            navigate(path);
+        }, 5000);
       }
+
+
+      const [ isAlertVisible, setIsAlertVisible ] = useState(false);
 
     const addRecipeToDB = async () => {
         console.log(recipeData);
 
         try {
-            let response = await fetch(`/api/v1/recipes`, 
-            {
-                method: 'post',
-                body: JSON.stringify(recipeData),
-                headers: {
-                    'Content-Type': 'application/json',
-                    "Authorization": 'Bearer ' + localStorage.getItem("token")
+            console.log('am i here try?')
+            let response = await fetch(`/api/v1/recipes`,
+                {
+                    method: 'post',
+                    body: JSON.stringify(recipeData),
+                    headers: {
+                        'Content-Type': 'application/json',
+                        "Authorization": 'Bearer ' + localStorage.getItem("token")
+                    }
                 }
+            );
+            if (response.ok) {
+                routeChangeMyRecipes()
+            }else {
+                setShowBadInfo(true)
+                console.log('am i here?')
             }
-        );
-        if (response.ok) {
-            routeChangeMyRecipes()
-        }
         } catch (err) {
-            console.log(err);
+            console.log(err, 'list this');
         }
     };
+
+    const [showBadInfo, setShowBadInfo] = useState(false)
 
     const options = ['Breakfast', 'Brunch', 'Lunch', 'Dinner'];
 
     return (
         <div className='add__overWrapper'>
             <div className='add__wrapper'>
+
+                {isAlertVisible ? <Saved/> : null}
+
                 <div className='add__title'>
                     <h2>Add Recipe</h2>
                     <span className='add__theLine'></span>
@@ -163,7 +181,12 @@ export const AddRecipe = () => {
                         <img src={backImage} alt="" />
                     </div>
                 </div>
+                {showBadInfo ? <div style={{color: "red", textDecoration: "underline"}}>
+                        Please add the missing information in the fields bellow!
+                        <br /><br />
+                    </div> : null }
                 <div className='add--content'>
+
                     <div className='add--recipeImg'>
                         <label htmlFor="recipeImg">Recipe Image</label>
                         <img src={recipeData.imgLink} alt="recipeImg" />
