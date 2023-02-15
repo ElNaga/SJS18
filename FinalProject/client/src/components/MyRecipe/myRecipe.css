@@ -115,3 +115,7 @@
     width: max-content;
     
 }
+
+.myRecipes--CardRecipeName {
+    cursor: pointer;
+}

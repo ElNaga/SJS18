@@ -113,3 +113,13 @@ Create account Text Content
     font-size: 14px;
     font-family: "Roboto", sans-serif;
 }
+
+.create__button:hover {
+    -webkit-filter: brightness(90%);
+    color: #e2e2e2;
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    -o-transition: all 0.2s ease;
+    -ms-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}

@@ -221,7 +221,7 @@ export const AddRecipe = () => {
                         </div>
                         <label htmlFor="add--recipeDescription">Short Description</label>
                         <textarea rows={4} id='add--recipeDescription' 
-                                placeholder='There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don’t look even slightly believable. If you are going to use a passage'
+                                placeholder='Description...'
                                 name='shortDesc' value={recipeData.shortDesc} onChange={dataChange}
                                 />
                         <button onClick={addRecipeToDB} className='add--saveButton'>SAVE</button>
