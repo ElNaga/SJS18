@@ -132,7 +132,7 @@ export const AddRecipe = () => {
             console.log('when will this appear')
             let path = `/myrecipes`; 
             navigate(path);
-        }, 5000);
+        }, 800);
       }
 
 

@@ -98,7 +98,7 @@ export const Home = () => {
                         <>
                             <RecipeCard
                              
-                                key={recipe._id}
+                                key={recipe._id+5}
                                 id={recipe._id}
                                 recipe1={recipe}
                                 onArrow={onArrow}
