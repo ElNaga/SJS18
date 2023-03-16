@@ -1,0 +1,58 @@
+body {
+    margin: 0% 20% 0% 20%;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    
+}
+
+.container {
+    width: 100%;
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(4, minmax(200px, 1fr));
+    justify-content: center;
+}
+
+
+@media (max-width: 1024px){
+    .container {
+        width: 100%;
+        display: grid;
+        gap: 20px;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        justify-content: center;
+    }
+}
+
+.card {
+    width: 210px;
+    height: 300px;
+    background-color: #f7f7f7;
+   margin: 0px;
+   padding: 0px;
+   overflow-wrap: break-word;
+   text-align: center;
+
+}
+
+.NameClass {
+    font-weight: 700;
+    font-size: 20px;
+    padding-top: 100px;
+}
+
+.MailClass {
+    font-size: small;
+    color: gray;
+}
+
+.AddressClass {
+    font-size: 15px;
+    font-weight: 300;
+}
+
+.WebsiteClass a{
+    text-decoration: none;
+    font-size: 14px;
+    color:rgb(113, 185, 224)
+    
+}

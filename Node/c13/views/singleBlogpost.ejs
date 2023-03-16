@@ -1,0 +1,25 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog: <%=data.title%></title>
+</head>
+
+<body>
+    <form method="post" action="/callback/post/<%=data._id%>">
+        <p style="font-size: 20px; "><%=data.title%></p>
+        <br />
+        <br />
+        <p style="border: 2px;
+        border-radius: 3.4px;"><%=data.content%></p>
+        <br />
+        <br />
+        <a href="/">Home</a>
+    </form>
+</body>
+
+</html>

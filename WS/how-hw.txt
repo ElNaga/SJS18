@@ -1,0 +1,18 @@
+1. Forgot password:
+    - POST method with body: email
+        - check email in DB
+    - if Yes:
+    - make reset-hash with email as payload called "link"
+    - write reset-hash in DB -> to user with email: email
+    - send a mail to 'email' with EXAMPLE /api/v1/auth/forgot-password?info="link"
+    - the link sent to the user would be a GET method... so the info needs to be in query
+    =>??? (STEP2)
+    - find in DB by reset-hash
+    - POST method with token and new password [OR email,password and token as payload | check mail again]
+    - delete or expire reset-hash
+
+3. Reset password: 
+        POST method: {email, password, newpassword, newpassword2}
+        If email with password is in DB => 
+            return OK, pass changed
+        else no can do
