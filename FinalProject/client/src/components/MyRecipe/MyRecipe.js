@@ -140,7 +140,7 @@ export const MyRecipe = () => {
                                 <p >{element.category}</p>
                             </div>
                             <div className='myRecipes--CardCreated'>
-                                <p >{element.dateCreated}</p>
+                                <p >{element.dateCreated.slice(0,10)}</p>
                             </div>
                         </div>
                         <div className='trashcanImage' onClick={() => removeRecipe(element._id)}>
